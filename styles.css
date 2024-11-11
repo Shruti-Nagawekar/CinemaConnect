@@ -1,8 +1,10 @@
 body {
-    margin: 0;
     font-family: Limelight, sans-serif;
     background-color: #151515;
     color: #C0C0C0;
+    padding: 0px;
+    margin:0px;
+    min-width: 400px;
 }
 
 /* Header Section */
@@ -14,72 +16,136 @@ body {
     background-color: black;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: left;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: #C0C0C0;
+    z-index: 10;
 }
 
-.header a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.header-logo {
+.header-logo a {
     font-size: 64px;
     color: #8A2BE2;
-    margin: 2.5%;
-    background-color: red;
+    -webkit-text-stroke: 1px #C0C0C0; /* Adds a white outline */
+    margin: 20px;
 }
 
+/* Navigation */
 .nav {
     display: flex;
     gap: 30px;
     font-size: 32px;
-    background-color: red;
+    align-items: center;
 }
+
+.nav a {
+    color: #C0C0C0;
+    text-decoration: none;
+    padding: 8px;
+}
+
+.nav a:hover {
+    color: #8400FF;
+}
+
+.nav .sign-in a{
+    color: #00FFFF;
+}
+
+.nav .sign-in a:hover{
+    color: #8400FF;
+}
+
+/* Sign-in Section */
 
 .sign-in {
     display: flex;
     justify-self: right;
     align-items: center;
-    gap: 10px;
-    margin: 2.5%;
-    background-color: red;
-
+    font-size: 16px;
 }
 
-.sign-in .icon {
-    width: 41px;
-    height: 41px;
-    background-color: #8A2BE2;
-    border-radius: 50%;
+
+#icon{
+    font-size:54px;
+    color :#8400FF;
 }
 
 .sign-in span {
     font-size: 16px;
+    margin: 5px;
 }
 
-.sign-in span.sign,
-.sign-in span.create {
+.sign a {
+    width: 75px;
     color: #00FFFF;
 }
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.burger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: #C0C0C0;
+    margin: 5px;
+}
+
+.mobile-nav a:hover {
+    color: #8400FF;
+}
+
+.mobile-nav a {
+    color: #C0C0C0;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.mobile-nav .sign-in a{
+    color: #00FFFF;
+}
+
+.mobile-nav .sign-in a:hover{
+    color: #8400FF;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #151515;
+    position: absolute;
+    top: 111px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.show-mobile-nav {
+    display: flex;
+}
+
 
 /* Main Section */
 .main-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 25px;
+    padding-top: 50px;
 }
 
 /* Search Bar */
 .search-bar {
-    width: 80%;
-    height: 102px;
+    width: 75%;
+    height: 50px;
     background-color: black;
-    border-radius: 50px;
+    border-radius: 25px;
     border: 3px solid #451671;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -104,40 +170,64 @@ body {
 .title-selection-container {
     width: 100%;
     display: flex;
-    
     align-items: center;
-    gap: 100px;
+    justify-content: space-between; /* Pushes section title and movie selection to opposite ends */
     margin-bottom: 50px;
     background-color: black;
     flex-wrap: wrap;
 }
 
 .section-title {
-    justify-self: start;
     font-size: 64px;
+    margin: 10px;
     color: #00FFFF;
+    -webkit-text-stroke: 1px #C0C0C0; /* Adds a white outline */
 }
 
 .movie-selection {
     display: flex;
-    justify-self: start;
     gap: 30px;
+    margin: 10px;
     font-size: 32px;
     color: #C0C0C0;
+    text-decoration-line: underline;
+    text-decoration-style: solid; /* this is default */
+    -webkit-text-stroke: 1px #fff; /* Adds a white outline */
 }
+
+.movie-selection a:hover{
+    color: #8400FF;
+} 
 
 /* Movie Card Container */
 .movie-card-container {
     display: flex;
     gap: 50px;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
     margin-bottom: 50px;
     flex-wrap: wrap;
 }
 
 .movie-card {
-    width: 400px;
-    height: 500px;
+    width: 300px;
+    height: 400px;
     background-color: #C0C0C0;
     border: 1px solid #8A2BE2;
 }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 800px) {
+        .nav {
+            display: none;
+        }
+
+        .burger-menu {
+            display: flex;
+        }
+    }
+    @media screen and (max-width: 645px) {
+        .title-selection-container {
+            justify-content: center; /* Pushes section title and movie selection to opposite ends */
+        }
+    }
