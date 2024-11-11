@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: Limelight, sans-serif;
+    background-color: #151515;
+    color: #C0C0C0;
+}
+
+/* Header Section */
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 111px;
+    background-color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: left;
+    align-items: center;
+    color: #C0C0C0;
+}
+
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.header-logo {
+    font-size: 64px;
+    color: #8A2BE2;
+    margin: 2.5%;
+    background-color: red;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+    font-size: 32px;
+    background-color: red;
+}
+
+.sign-in {
+    display: flex;
+    justify-self: right;
+    align-items: center;
+    gap: 10px;
+    margin: 2.5%;
+    background-color: red;
+
+}
+
+.sign-in .icon {
+    width: 41px;
+    height: 41px;
+    background-color: #8A2BE2;
+    border-radius: 50%;
+}
+
+.sign-in span {
+    font-size: 16px;
+}
+
+.sign-in span.sign,
+.sign-in span.create {
+    color: #00FFFF;
+}
+
+/* Main Section */
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 80%;
+    height: 102px;
+    background-color: black;
+    border-radius: 50px;
+    border: 3px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-bottom: 50px;
+}
+
+.search-bar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #8400FF;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+.search-bar .text {
+    font-size: 36px;
+}
+
+/* Title and Movie Selection */
+.title-selection-container {
+    width: 100%;
+    display: flex;
+    
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 50px;
+    background-color: black;
+    flex-wrap: wrap;
+}
+
+.section-title {
+    justify-self: start;
+    font-size: 64px;
+    color: #00FFFF;
+}
+
+.movie-selection {
+    display: flex;
+    justify-self: start;
+    gap: 30px;
+    font-size: 32px;
+    color: #C0C0C0;
+}
+
+/* Movie Card Container */
+.movie-card-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    width: 400px;
+    height: 500px;
+    background-color: #C0C0C0;
+    border: 1px solid #8A2BE2;
+}

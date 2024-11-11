@@ -1,175 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>MBS Movies</title>
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: Limelight, sans-serif;
-            background-color: #151515;
-            color: #C0C0C0;
-        }
-
-        /* Header Section */
-        .header {
-            width: 100%;
-            height: 111px;
-            background-color: black;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 65px;
-            color: #C0C0C0;
-        }
-
-        .header-logo {
-            font-size: 64px;
-            color: #8A2BE2;
-        }
-
-        .nav {
-            display: flex;
-            gap: 30px;
-            font-size: 32px;
-        }
-
-        .sign-in {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sign-in .icon {
-            width: 41px;
-            height: 41px;
-            background-color: #8A2BE2;
-            border-radius: 50%;
-        }
-
-        .sign-in span {
-            font-size: 16px;
-        }
-
-        .sign-in span.sign,
-        .sign-in span.create {
-            color: #00FFFF;
-        }
-
-        /* Main Section */
-        .main-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 50px;
-        }
-
-        /* Search Bar */
-        .search-bar {
-            width: 949px;
-            height: 102px;
-            background-color: black;
-            border-radius: 50px;
-            border: 3px solid #451671;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            margin-bottom: 50px;
-        }
-
-        .search-bar .icon {
-            width: 40px;
-            height: 40px;
-            background-color: #8400FF;
-            border-radius: 50%;
-            margin-right: 30px;
-        }
-
-        .search-bar .text {
-            font-size: 36px;
-        }
-
-        /* Title and Movie Selection */
-        .title-selection-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 100px;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 64px;
-            color: #00FFFF;
-        }
-
-        .movie-selection {
-            display: flex;
-            gap: 30px;
-            font-size: 32px;
-            color: #C0C0C0;
-        }
-
-        /* Movie Card Container */
-        .movie-card-container {
-            display: flex;
-            gap: 50px;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .movie-card {
-            width: 400px;
-            height: 500px;
-            background-color: #C0C0C0;
-            border: 1px solid #8A2BE2;
-        }
-    </style>
 </head>
+
+<style>
+    body {
+        font-family: Limelight, sans-serif;
+        background-color: #151515;
+        color: #C0C0C0;
+        padding: 0px;
+        margin:0px;
+        min-width: 400px;
+    }
+
+    /* Header Section */
+    .header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 111px;
+        background-color: black;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+    }
+
+    .header-logo {
+        font-size: 64px;
+        color: #8A2BE2;
+        -webkit-text-stroke: 1px #C0C0C0; /* Adds a white outline */
+        margin: 20px;
+    }
+
+    /* Navigation */
+    .nav {
+        display: flex;
+        gap: 30px;
+        font-size: 32px;
+        align-items: center;
+    }
+
+    .nav a {
+        color: #C0C0C0;
+        text-decoration: none;
+        padding: 8px;
+    }
+
+    .nav a:hover {
+        color: #8400FF;
+    }
+
+    .nav .sign-in a{
+        color: #00FFFF;
+    }
+
+    .nav .sign-in a:hover{
+        color: #8400FF;
+    }
+
+    /* Sign-in Section */
+    
+    .sign-in {
+        display: flex;
+        justify-self: right;
+        align-items: center;
+        font-size: 16px;
+    }
+
+
+    #icon{
+        font-size:54px;
+        color :#8400FF;
+    }
+
+    .sign-in span {
+        font-size: 16px;
+        margin: 5px;
+    }
+
+    .sign a {
+        width: 75px;
+        color: #00FFFF;
+    }
+
+    /* Burger Menu */
+    .burger-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .burger-menu div {
+        width: 30px;
+        height: 3px;
+        background-color: #C0C0C0;
+        margin: 5px;
+    }
+
+    .mobile-nav a:hover {
+        color: #8400FF;
+    }
+
+    .mobile-nav a {
+        color: #C0C0C0;
+        text-decoration: none;
+        margin: 5px;
+    }
+
+    .mobile-nav .sign-in a{
+        color: #00FFFF;
+    }
+
+    .mobile-nav .sign-in a:hover{
+        color: #8400FF;
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #151515;
+        position: absolute;
+        top: 111px;
+        right: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .show-mobile-nav {
+        display: flex;
+    }
+
+
+    /* Main Section */
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+        width: 75%;
+        height: 50px;
+        background-color: black;
+        border-radius: 25px;
+        border: 3px solid #451671;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        margin-bottom: 50px;
+    }
+
+    .search-bar .icon {
+        width: 40px;
+        height: 40px;
+        background-color: #8400FF;
+        border-radius: 50%;
+        margin-right: 30px;
+    }
+
+    .search-bar .text {
+        font-size: 36px;
+    }
+
+    /* Title and Movie Selection */
+    .title-selection-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Pushes section title and movie selection to opposite ends */
+        margin-bottom: 50px;
+        background-color: black;
+        flex-wrap: wrap;
+    }
+
+    .section-title {
+        font-size: 64px;
+        margin: 10px;
+        color: #00FFFF;
+        -webkit-text-stroke: 1px #C0C0C0; /* Adds a white outline */
+    }
+
+    .movie-selection {
+        display: flex;
+        gap: 30px;
+        margin: 10px;
+        font-size: 32px;
+        color: #C0C0C0;
+        text-decoration-line: underline;
+        text-decoration-style: solid; /* this is default */
+        -webkit-text-stroke: 1px #fff; /* Adds a white outline */
+    }
+
+    .movie-selection a:hover{
+        color: #8400FF;
+    } 
+
+    /* Movie Card Container */
+    .movie-card-container {
+        display: flex;
+        gap: 50px;
+        width: 100%;
+        justify-content: space-evenly;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+
+    .movie-card {
+        width: 300px;
+        height: 400px;
+        background-color: #C0C0C0;
+        border: 1px solid #8A2BE2;
+    }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 800px) {
+            .nav {
+                display: none;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+        }
+        @media screen and (max-width: 645px) {
+            .title-selection-container {
+                justify-content: center; /* Pushes section title and movie selection to opposite ends */
+            }
+        }
+</style>
+
 <body>
 
     <!-- Header Section -->
     <header class="header">
         <div class="header-logo">MBS</div>
         
-        <!-- Navigation -->
+        <!-- Navigation Links and Burger Menu -->
         <nav class="nav">
-            <div>Movies</div>
-            <div>Theaters</div>
+            <a href="#movies">Movies</a>
+            <a href="#theaters">Theaters</a>
+            <div class="sign-in">
+                <span class="material-symbols-outlined" id ="icon">
+                    account_circle
+                </span>
+                <a class="sign">Sign in</a>
+                <span>or</span>
+                <a class="create">Create an Account</a>
+            </div>
         </nav>
-        
-        <!-- Sign-in Section -->
-        <div class="sign-in">
-            <div class="icon"></div>
-            <span class="sign">Sign in</span>
-            <span>or</span>
-            <span class="create">Create an Account</span>
+
+        <div class="burger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#movies">Movies</a>
+            <a href="#theaters">Theaters</a>
+            <div class="sign-in">
+                <span class="material-symbols-outlined" id ="icon">
+                    account_circle
+                </span>
+                <a class="sign">Sign in</a>
+                <span>or</span>
+                <a class="create">Create an Account</a>
+            </div>
+        </div>
         </div>
     </header>
 
     <!-- Main Section -->
     <main class="main-section">
-        
         <!-- Search Bar -->
         <div class="search-bar">
-            <div class="icon"></div>
+            <span class="material-symbols-outlined" id ="icon">
+                search
+            </span>
             <div class="text">Search</div>
         </div>
-        
+
         <!-- Title and Movie Selection (Side by Side) -->
         <div class="title-selection-container">
-            <!-- Section Title -->
             <div class="section-title">Movies</div>
-            
-            <!-- Movie Selection -->
             <div class="movie-selection">
-                <span>Current</span>
-                <span>Upcoming</span>
+                <a>Current</a>
+                <a>Upcoming</a>
             </div>
         </div>
 
@@ -178,8 +314,20 @@
             <div class="movie-card"></div>
             <div class="movie-card"></div>
             <div class="movie-card"></div>
+            <div class="movie-card"></div>
+            
         </div>
     </main>
 
+    
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById("mobileNav");
+            mobileNav.classList.toggle("show-mobile-nav");
+        }
+    </script>
+
 </body>
+
 </html>
