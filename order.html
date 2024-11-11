@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Lexend+Deca&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        /* Order Container */
+        .order-container {
+            position: relative;
+            width: 1440px;
+            height: 1024px;
+            background: #151515;
+        }
+
+        /* Shopping Cart */
+        .shopping-cart {
+            position: absolute;
+            width: 400px;
+            height: 75px;
+            left: 257px;
+            top: 171px;
+            font-family: 'Limelight', sans-serif;
+            font-size: 48px;
+            color: #00FFFF;
+        }
+
+        /* Rectangle 7 */
+        .rectangle-7 {
+            position: absolute;
+            width: 280px;
+            height: 50px;
+            left: 825px;
+            top: 878px;
+            border: 5px solid #451671;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            border-radius: 50px;
+        }
+
+        /* Rectangle 24 */
+        .rectangle-24 {
+            position: absolute;
+            width: 280px;
+            height: 50px;
+            left: 825px;
+            top: 800px;
+            background: #451671;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+        }        
+
+        /* Order Summary */
+        .order-summary {
+            position: absolute;
+            width: 320px;
+            height: 24px;
+            left: 257px;
+            top: 300px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 25px;
+            color: #C0C0C0;
+        }
+
+        /* Movie Title and Date */
+        .movie-details {
+            position: absolute;
+            width: 330px;
+            left: 263px;
+            top: 350px; /* Updated to position it below the Order Summary */
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: #00FFFF;
+        }
+
+        /* Individual Line of Movie Details */
+        .movie-details div {
+            margin-bottom: 7px;
+        }
+
+        /* Styling specific lines */
+        .movie-details .date-time, 
+        .movie-details .theater-address, 
+        .movie-details .seat {
+            color: #C0C0C0;
+        }
+
+        /* Items in Cart */
+        .items-in-cart {
+            position: absolute;
+            width: 450px;
+            height: 45px;
+            left: 275px;
+            top: 291px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        /* Price */
+        .price {
+            position: absolute;
+            width: 115px;
+            height: 35px;
+            left: 973px;
+            top: 650px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 30px;
+            color: #C0C0C0;
+            text-align: right;
+        }
+
+        /* Checkout Button */
+        .checkout-button {
+            position: absolute;
+            width: 350px;
+            height: 55px;
+            left: 790px;
+            top: 800px;
+            font-family: 'Limelight', sans-serif;
+            font-size: 20px;
+            color: #C0C0C0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Keep Shopping Button */
+        .keep-shopping {
+            position: absolute;
+            width: 350px;
+            height: 55px;
+            left: 790px;
+            top: 878px;
+            font-family: 'Limelight', sans-serif;
+            font-size: 20px;
+            color: #451671;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            width: 1440px;
+            height: 111px;
+            top: 0;
+            background: #000000;
+            border: 1px solid rgba(0, 0, 0, 0.35);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Limelight', sans-serif;
+            font-size: 48px;
+            color: #8A2BE2;
+            text-align: center;
+            width: 120px;
+        }
+
+        .nav-item {
+            font-family: 'Limelight', sans-serif;
+            font-size: 24px;
+            color: #C0C0C0;
+            text-align: center;
+            padding: 0 30px;
+        }
+
+        .sign-in {
+            font-family: 'Limelight', sans-serif;
+            font-size: 14px;
+            color: #00FFFF;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            width: 240px;
+            height: 90px;
+        }
+
+        /* Cart Option */
+        .cart {
+            font-family: 'Limelight', sans-serif;
+            font-size: 24px;
+            color: #C0C0C0;
+            text-align: center;
+            padding: 0 30px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart .cart-icon {
+            font-size: 28px;
+            margin-right: 5px;
+        }
+        
+        .cart .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: #FF0000;
+            color: #FFF;
+            font-size: 12px;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="order-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MBS</div>
+            <div class="nav-item">Movies</div>
+            <div class="nav-item">Theaters</div>
+            <div class="cart">
+                <span class="cart-icon">🛒</span> <!-- Cart Icon -->
+                Cart
+                <div class="cart-count">3</div> <!-- Cart Item Count -->
+            </div>
+            <div class="sign-in">Sign in or Create an Account</div>
+        </div>
+
+        <!-- Shopping Cart -->
+        <div class="shopping-cart">Shopping Cart</div>
+
+        <!-- Rectangle 7 -->
+        <div class="rectangle-7"></div>
+
+        <!-- Rectangle 24 -->
+        <div class="rectangle-24"></div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">Order Summary</div>
+
+        <!-- Movie Title & Date (separated into lines) -->
+        <div class="movie-details">
+            <div>Movie Title</div>
+            <div class="date-time">Date at Time</div>
+            <div class="theater-address">Theater Address</div>
+            <div>Ticket(#)</div>
+            <div class="seat">Seat: XX XX XX</div>
+        </div>
+
+        <!-- Price -->
+        <div class="price">$00.00</div>
+
+        <!-- Checkout Button -->
+        <div class="checkout-button">Checkout</div>
+
+        <!-- Keep Shopping Button -->
+        <div class="keep-shopping">Keep Shopping</div>
+    </div>
+</body>
+</html>
