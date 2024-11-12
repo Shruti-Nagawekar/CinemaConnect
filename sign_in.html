@@ -146,8 +146,75 @@
             font-size: 16px;
         }
     </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- import Google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- import Style sheet -->
+    <link rel="stylesheet" href="styles.css">
+    <title>MBS Movies</title>
 </head>
+
 <body>
+
+    <!-- Header Section -->
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href = "Home.html">CC</a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav">
+            <a href = "Movies.html">Movies</a>
+            <a href = "Theaters.html">Theaters</a>
+            <div class="sign-in">
+                <span class="material-symbols-outlined" id ="icon">
+                    account_circle
+                </span>
+                <a class="sign" href="sign_in.html">Sign in</a>
+                <span>or</span>
+                <a class="create" href="create_acc.html">Create an Account</a>
+            </div>
+            <a href="ShopingCart.html">
+                <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+                    shopping_cart
+                </span>
+            </a>
+            
+        </nav>
+
+        <!-- Burgger menu (shown when screen small) -->
+        <div class="burger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#movies">Movies</a>
+            <a href="#theaters">Theaters</a>
+            <div class="sign-in">
+                <span class="material-symbols-outlined" id ="icon">
+                    account_circle
+                </span>
+                <a class="sign">Sign in</a>
+                <span>or</span>
+                <a class="create">Create an Account</a>
+            </div>
+        </div>
+
+    </header>
+
     <div class="login-container">
         <div class="header">
             <div class="header-item header-item-mbs">MBS</div>

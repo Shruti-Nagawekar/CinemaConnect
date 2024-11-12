@@ -194,7 +194,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
 }
 
 /* Search Bar */
@@ -208,7 +207,7 @@ body {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    margin-bottom: 50px;
+    margin: 25px;
 }
 
 .search-bar .icon {
