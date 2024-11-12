@@ -446,7 +446,7 @@ body {
 
         /* Order Container */
         .order-container {
-            position: relative;
+            position: flex;
             width: 1440px;
             height: 1024px;
             background: #151515;

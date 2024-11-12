@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--  -->
+<!-- html Start -->
+<html lang="en">        
+
+<!-- Header(tabspace and imports) -->
 <head>
-    <title>Movie</title>
+    <title>Admin</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,20 +18,17 @@
 
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 
 <body>
 
     <!-- Header Section -->
     <header class="header">
-
-        <!-- Logo -->
         <div class="header-logo">
             <a href = "Home.html">CC</a>
         </div>
         
-        <!-- Navigation Links -->
+        <!-- Navigation Links and Burger Menu -->
         <nav class="nav">
             <a href = "Movies.html">Movies</a>
             <a href = "Theaters.html">Theaters</a>
@@ -47,7 +48,6 @@
             
         </nav>
 
-        <!-- Burgger menu (shown when screen small) -->
         <div class="burger-menu" onclick="toggleMobileNav()">
             <div></div>
             <div></div>
@@ -67,33 +67,24 @@
                 <a class="create">Create an Account</a>
             </div>
         </div>
+        </div>
     </header>
 
-    <!-- Registration Form Container -->
-    <div class="register-container">
-        <div class="register-title">Create an Account</div>
+    <!-- Main Section -->
+    <main class="main-section">
+         
         
-        <!-- Input Fields -->
-        <div class="input-container">
-            <input type="text" class="input-field" placeholder="Email Address">
-            <input type="text" class="input-field" placeholder="Confirm Email Address">
-        </div>
-        <div class="input-container">
-            <input type="text" class="input-field" placeholder="Name">
-            <input type="text" class="input-field" placeholder="Phone Number">
-        </div>
-        <div class="input-container">
-            <input type="password" class="input-field" placeholder="Password">
-            <input type="text" class="input-field" placeholder="Home Address">
-        </div>
-        
-        <!-- Password Instructions under Password Field -->
-        <div class="password-instructions">Minimum of eight characters, with at least one letter and one number.</div>
+    </main>
 
-        <!-- Register Button -->
-        <div class="button-container">
-            <div class="register-button">Register</div>
-        </div>
-    </div>
+    
+
+    <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById("mobileNav");
+            mobileNav.classList.toggle("show-mobile-nav");
+        }
+    </script>
+
 </body>
+
 </html>
