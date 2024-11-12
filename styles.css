@@ -7,39 +7,39 @@ element
 
     background-color: #151515;                          <!-- Backround color (Hex) -->
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);        <!--  -->
+    box-shadow: 0px 4px 4px #151515;                    <!-- shadow -->
 
-    border: 1px solid rgba(0, 0, 0, 0.35);              <!--  -->
+    border: 1px solid #151515;                          <!-- Border default off: sixe(px) style color(hex) -->
 
-    border-radius: 10px;                                <!--  -->
+    border-radius: 10px;                                <!-- curved corners of the border -->
 
-    cursor: pointer;                                    <!--  -->
+    cursor: pointer;                                    <!-- cursor style -->
 
-    color: #C0C0C0;                                     <!--  -->
+    color: #C0C0C0;                                     <!-- text color -->
 
-    display: flex;                                      <!--  -->
+    display: flex;                                      <!-- how objects move -->
 
-    flex-direction: column;                             <!--  -->
+    flex-direction: column;                             <!-- direction div items move -->
 
-    flex-wrap: wrap;                                    <!--  -->
+    flex-wrap: wrap;                                    <!-- how do objects in the div behave(wrap) -->
 
-    font-family: Limelight, sans-serif;                 <!--  -->
+    font-family: Limelight, sans-serif;                 <!-- font style -->
 
-    font-size: 64px;                                    <!--  -->
+    font-size: 64px;                                    <!-- font size -->
 
-    gap: 30px;                                          <!--  -->
+    gap: 30px;                                          <!-- space between objects in div -->
 
-    height: 111px;                                      <!--  -->
+    height: 111px;                                      <!-- Height of div -->
 
-    justify-content: space-between;                     <!--  -->
+    justify-content: space-between;                     <!-- horizontle podition of objects in div -->
 
-    justify-self: right;                                <!--  -->
+    justify-self: right;                                <!-- horizontle position of div -->
 
-    margin: px;                                         <!--  -->
+    margin: px;                                         <!-- space between a element and the next posible element -->
 
-    padding: 0px;                                       <!--  -->
+    padding: 0px;                                       <!-- space between its content and its border. -->
 
-    position: sticky;                                   <!--  -->
+    position: sticky;                                   <!-- position in page: (static|absolute|fixed|relative|sticky|initial|inherit;)-->
 
     text-decoration-line: underline;                    <!-- add stuf to text (line) -->
 
