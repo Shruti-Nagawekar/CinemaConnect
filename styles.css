@@ -582,6 +582,93 @@ body {
             justify-content: center;
         }
 
+        /* Order Details */
+        .order-details {
+            position: absolute;
+            width: 525px;
+            height: 95px;
+            left: 218px;
+            top: 161px;
+            font-family: 'Limelight', sans-serif;
+            font-size: 64px;
+            color: #00FFFF;
+        }
+
+        /* Thank you message */
+        .thank-you-message {
+            position: absolute;
+            width: 1046px;
+            height: 125px;
+            left: 218px;
+            top: 256px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #C0C0C0;
+        }
+
+        /* Confirmation Rectangle */
+        .rectangle-23 {
+            position: absolute;
+            width: 1046px;
+            height: 250px;
+            left: 218px;
+            top: 381px;
+            background: #000000;
+            border: 1px solid #451671;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+
+        /* Movie Ticket */
+        .movie-ticket {
+            position: absolute;
+            left: 412px;
+            top: 20px;
+            width: 300px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+
+        /* Confirmation Number */
+        .confirmation-number {
+            position: absolute;
+            width: 647px;
+            height: 86px;
+            left: 412px;
+            top: 550px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            text-align: center;
+            color: #C0C0C0;
+        }
+
+        /* Movie Details */
+        .movie-details {
+            position: absolute;
+            width: 450px;
+            height: 225px;
+            left: 513px;
+            top: 698px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #00FFFF;
+        }
+
+        /* Rectangle for Movie Details */
+        .rectangle-14 {
+            position: absolute;
+            width: 245px;
+            height: 275px;
+            left: 218px;
+            top: 674px;
+            background: #C0C0C0;
+            border: 1px solid #451671;
+        }
 
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
