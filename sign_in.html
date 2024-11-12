@@ -1,155 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
-    <style>
-        /* Universal Box-Sizing */
-        * {
-            box-sizing: border-box;
-        }
 
-        /* General Login Container */
-        .login-container {
-            position: relative;
-            width: 1440px;
-            height: 1024px;
-            background: #151515;
-            margin: 0 auto;
-        }
-
-        /* Centered Rectangle for Login Form */
-        .rectangle {
-            position: absolute;
-            width: 548px;
-            height: 614px;
-            left: 50%;
-            top: 242px;
-            transform: translateX(-50%);
-            background: #000000;
-            border: 1px solid #7C8FCD;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 15px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        /* Sign-In Text Positioned at Top of Rectangle */
-        .sign-in {
-            font-family: 'Limelight', sans-serif;
-            font-size: 48px;
-            text-align: center;
-            color: #00FFFF;
-            border-bottom: 1px solid #FFFFFF;
-            width: 100%;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        /* Input Field Styling */
-        .input-field {
-            width: 450px;
-            height: 65px;
-            background: #151515;
-            border: 3px solid #451671;
-            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            color: #C0C0C0;
-            font-family: 'Limelight', sans-serif;
-            font-size: 32px;
-            margin: 10px 0;
-            padding: 5px;
-        }
-
-        /* Button Styling */
-        .button {
-            width: 375px;
-            height: 65px;
-            background: #451671;
-            color: #C0C0C0;
-            border-radius: 50px;
-            text-align: center;
-            line-height: 65px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 24px;
-            margin-top: 20px;
-        }
-
-        /* Additional Links */
-        .link-text {
-            font-family: 'Limelight', sans-serif;
-            color: #C0C0C0;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .forgot-password, .new-account {
-            color: #00FFFF;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        /* Checkbox */
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .checkbox {
-            width: 30px;
-            height: 30px;
-            background: rgba(247, 245, 251, 0.75);
-            border: 1px solid #00FFFF;
-            margin-right: 10px;
-        }
-
-        .checkbox-label {
-            font-family: 'Limelight', sans-serif;
-            color: #C0C0C0;
-            font-size: 32px;
-        }
-
-        /* Header */
-        .header {
-            position: absolute;
-            width: 1440px;
-            height: 111px;
-            top: 0;
-            background: #000000;
-            border: 1px solid rgba(0, 0, 0, 0.35);
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .header-item {
-            font-family: 'Limelight', sans-serif;
-            color: #C0C0C0;
-            text-align: center;
-            padding: 0 10px;
-        }
-
-        .header-item-mbs {
-            color: #8A2BE2;
-            font-size: 64px;
-        }
-
-        .header-item-button {
-            color: #00FFFF;
-            font-size: 16px;
-        }
-    </style>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -159,7 +14,6 @@
 
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
-    <title>MBS Movies</title>
 </head>
 
 <body>
@@ -216,15 +70,8 @@
     </header>
 
     <div class="login-container">
-        <div class="header">
-            <div class="header-item header-item-mbs">MBS</div>
-            <div class="header-item">Movies</div>
-            <div class="header-item">Theaters</div>
-            <div class="header-item header-item-button">Sign in or Create an Account</div>
-        </div>
-        
         <div class="rectangle">
-            <div class="sign-in">Sign In</div> <!-- Moved inside .rectangle and styled to sit at top -->
+            <div class="register-title">Sign In</div> <!-- Moved inside .rectangle and styled to sit at top -->
 
             <input type="text" id="email" class="input-field" placeholder="Email Address">
             <input type="password" id="password" class="input-field" placeholder="Password">
