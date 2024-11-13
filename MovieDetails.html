@@ -18,6 +18,144 @@
 
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1440px;
+            background: #151515;
+        }
+
+        /* Movie Header Section */
+        .movie-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .poster {
+            width: 100%;
+            max-width: 375px;
+            aspect-ratio: 375 / 425;
+            background: #C0C0C0;
+            border: 2px solid #8A2BE2;
+        }
+
+        .Movie {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 25px;
+        }
+
+        .Movie-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 2;
+        }
+
+        .Movie-book {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 25px;
+        }
+
+        .movie-title {
+            color: #00FFFF;
+            font-size: 2.5em;
+            font-family: Limelight, cursive;
+            font-weight: 400;
+        }
+
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 15px;
+            font-size: 1em;
+            font-family: Lexend Deca, sans-serif;
+        }
+
+        .info-item {
+            flex: 1 1 120px;
+            min-width: 100px;
+            font-weight: 400;
+        }
+
+        /* Description Section */
+        .description {
+            font-size: 1.1em;
+            font-family: Lexend Deca, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Tickets Button */
+        .tickets-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background: #451671;
+            border-radius: 5px;
+            color: #C0C0C0;
+            font-size: 1.5em;
+            font-family: Limelight, cursive;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: #000;
+            padding: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.35);
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .reviews-title {
+            color: #8A2BE2;
+            font-size: 2.5em;
+            font-family: Limelight, cursive;
+        }
+
+        .write-review {
+            width: 100%;
+            max-width: 800px;
+            padding: 10px;
+            background: #151515;
+            border: 1px solid #451671;
+            text-align: center;
+            color: #C0C0C0;
+            font-size: 1.25em;
+            font-family: Lexend Mega, sans-serif;
+        }
+
+        .review-details {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 5px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .review-rating {
+            color: #00FFFF;
+        }
+        </style>
 </head>
 
 <body>
@@ -67,13 +205,52 @@
                 <a class="create">Create an Account</a>
             </div>
         </div>
-        </div>
     </header>
 
     <!-- Main Section -->
     <main class="main-section">
          
-        
+        <div class="container">
+            <div class = "Movie">
+                <div class = "Movie-book">
+                    <!-- Poster Section -->
+                    <div class="movie-card"></div>
+
+                    <!-- Tickets Button -->
+                    <div class="tickets-button">Tickets</div>
+                </div>
+
+                <div class = "Movie-info">
+                    <!-- Movie Title -->
+                    <div class="movie-title">Movie Title</div>
+                    
+                    <!-- Movie Info Section -->
+                    <div class="info-section">
+                        <div class="runtime">Runtime<br/>XX hr XX min</div>
+                        <div class="release-date">Release Date<br/>Day XX, 20XX</div>
+                        <div class="rating">Rating<br/>PG</div>
+                        <div class="genre">Genre<br/>Lorem ipsum</div>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis enim luctus odio ultrices fringilla. Pellentesque maximus sagittis accumsan. Aenean eleifend metus eget erat faucibus commodo. Aliquam faucibus sit amet ipsum quis egestas. Sed nec neque vel nunc vehicula dapibus. Mauris porttitor viverra ornare. Donec molestie molestie ex non pellentesque.<br/><br/>Fusce ipsum enim, laoreet ac eros vel, scelerisque convallis risus. Praesent scelerisque commodo dolor eget aliquam. Etiam in lacus arcu. Vestibulum aliquam nulla eros, vel condimentum lacus tempus ac.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reviews Section -->
+            <div class="reviews-section">
+                <div class="reviews-title">Reviews</div>
+                <div class="review-input-background"></div>
+                <div class="write-review">Write a review</div>
+                <div class="review-details">
+                    <span>Username<br/></span>
+                    <span class="review-rating">★★★★</span>
+                    ★<br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis enim luctus odio ultrices fringilla. Pellentesque maximus
+                </div>
+            </div>
+        </div>
     </main>
 
     
