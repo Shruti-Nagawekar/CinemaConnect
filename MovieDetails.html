@@ -59,7 +59,6 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            flex-grow: 2;
         }
 
         .Movie-book {
@@ -121,7 +120,7 @@
             box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: right;
             gap: 20px;
         }
 
@@ -132,15 +131,16 @@
         }
 
         .write-review {
-            width: 100%;
-            max-width: 800px;
+            width: 95%;
+            align-self: center;
             padding: 10px;
+            margin: 10px;
             background: #151515;
             border: 1px solid #451671;
-            text-align: center;
             color: #C0C0C0;
             font-size: 1.25em;
             font-family: Lexend Mega, sans-serif;
+            border-radius: 5px;
         }
 
         .review-details {
@@ -155,6 +155,13 @@
         .review-rating {
             color: #00FFFF;
         }
+
+        .stars{
+            color: #C0C0C0;
+        }
+
+
+
         </style>
 </head>
 
@@ -242,12 +249,13 @@
             <!-- Reviews Section -->
             <div class="reviews-section">
                 <div class="reviews-title">Reviews</div>
-                <div class="review-input-background"></div>
                 <div class="write-review">Write a review</div>
                 <div class="review-details">
                     <span>Username<br/></span>
-                    <span class="review-rating">★★★★</span>
-                    ★<br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis enim luctus odio ultrices fringilla. Pellentesque maximus
+                    <span class="stars">
+                        <span class="review-rating">★★★★</span>★
+                    </span>
+                    <br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis enim luctus odio ultrices fringilla. Pellentesque maximus
                 </div>
             </div>
         </div>

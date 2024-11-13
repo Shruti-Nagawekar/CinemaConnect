@@ -679,6 +679,10 @@ body {
     .burger-menu {
         display: flex;
     }
+
+    .Movie{
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (max-width: 645px) {
