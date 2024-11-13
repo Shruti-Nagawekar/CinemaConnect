@@ -15,7 +15,7 @@
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-
+<script src="funtions.js"></script>
 <body>
 
     <!-- Header Section -->
@@ -26,82 +26,91 @@
             <a href = "Home.html">CC</a>
         </div>
         
-        <!-- Navigation Links -->
-        <nav class="nav">
-            <a href = "MoviesList.html">Movies</a>
-            <a href = "Theaters.html">Theaters</a>
-            <div class="sign-in">
-                <span class="material-symbols-outlined" id ="icon">
-                    account_circle
-                </span>
-                <a class="sign" href="sign_in.html">Sign in</a>
-                <span>or</span>
-                <a class="create" href="create_acc.html">Create an Account</a>
+        <div class = "nav-burggger-cart">
+            <!-- Navigation Links -->
+            <nav class="nav">
+                <a href = "MoviesList.html">Movies</sa>
+                <a href = "Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id ="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>            
+            </nav>
+
+            <!-- Burgger menu (shown when screen small) -->
+            <div class="burger-menu" onclick="toggleMobileNav()">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-            <a href="ShopingCart.html">
-                <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
-                    shopping_cart
-                </span>
-            </a>
-            
-        </nav>
 
-        <!-- Burgger menu (shown when screen small) -->
-        <div class="burger-menu" onclick="toggleMobileNav()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav" id="mobileNav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id ="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>            
+            </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div class="mobile-nav" id="mobileNav">
-            <a href="#movies">Movies</a>
-            <a href="#theaters">Theaters</a>
-            <div class="sign-in">
-                <span class="material-symbols-outlined" id ="icon">
-                    account_circle
-                </span>
-                <a class="sign">Sign in</a>
-                <span>or</span>
-                <a class="create">Create an Account</a>
+            <!-- Shoping Cart -->
+            <div class = "ShopingCart">
+                <a href="ShopingCart.html">
+                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+                        shopping_cart
+                    </span>
+                </a>
             </div>
         </div>
 
     </header>
 
-    <div class="confirmation">
-    <!-- Order Details -->
-        <div class="order-details">Order Details</div>
+    <main>
 
-        <!-- Thank You Message -->
-        <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account, and an email confirmation has been sent to the email address used to make the purchase.</div>
+        <div class="confirmation">
+        <!-- Order Details -->
+            <div class="order-details">Order Details</div>
 
-        <!-- Confirmation Rectangle -->
-        <div class="rectangle-23">
-            <!-- Barcode Image in Place of Movie Ticket Text -->
-            <div class="movie-ticket">
-                <img src="https://i.pinimg.com/originals/ef/02/9b/ef029b177618ee0dbf95033a08ac0f53.jpg" alt="Barcode" width="200">
+            <!-- Thank You Message -->
+            <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account, and an email confirmation has been sent to the email address used to make the purchase.</div>
+
+            <!-- Confirmation Rectangle -->
+            <div class="rectangle-23">
+                <!-- Barcode Image in Place of Movie Ticket Text -->
+                <div class="movie-ticket">
+                    <img src="https://i.pinimg.com/originals/ef/02/9b/ef029b177618ee0dbf95033a08ac0f53.jpg" alt="Barcode" width="200">
+                </div>
             </div>
-        </div>
 
-        <!-- Confirmation Number -->
-        <div class="confirmation-number">
-            <div>Confirmation Number: 00000000000000</div>
-            <div>Show your barcode at the theater podium to pick up your tickets.</div>
-        </div>
+            <!-- Confirmation Number -->
+            <div class="confirmation-number">
+                <div>Confirmation Number: 00000000000000</div>
+                <div>Show your barcode at the theater podium to pick up your tickets.</div>
+            </div>
 
-        <!-- Movie Details -->
-        <div class="movie-details">
-            <div>Movie Title</div>
-            <div class="date-time">Date at Time</div>
-            <div class="theater-address">Theater Address</div>
-            <div>Ticket(#)</div>
-            <div class="seat">Seat: XX XX XX</div>
-        </div>
+            <!-- Movie Details -->
+            <div class="movie-details">
+                <div>Movie Title</div>
+                <div class="date-time">Date at Time</div>
+                <div class="theater-address">Theater Address</div>
+                <div>Ticket(#)</div>
+                <div class="seat">Seat: XX XX XX</div>
+            </div>
 
-        <!-- Rectangle for Movie Details -->
-        <div class="rectangle-14"></div>
-    </div>
+            <!-- Rectangle for Movie Details -->
+            <div class="rectangle-14"></div>
+        </div>
+        
+    </main>
 
 </body>
 </html>

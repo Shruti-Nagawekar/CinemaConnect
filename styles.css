@@ -137,6 +137,12 @@ body {
     color: #00FFFF;
 }
 
+.nav-burggger-cart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 /* Burger Menu */
 .burger-menu {
     display: none;
@@ -186,6 +192,10 @@ body {
 
 .show-mobile-nav {
     display: flex;
+}
+
+.ShopingCart{
+    margin: 10px;
 }
 
 
@@ -682,8 +692,147 @@ body {
     font-family: 'Limelight', sans-serif;
     font-size: 24px;
 }
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1440px;
+    background: #151515;
+}
+
+/* Movie Header Section */
+.movie-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.poster {
+    width: 100%;
+    max-width: 375px;
+    aspect-ratio: 375 / 425;
+    background: #C0C0C0;
+    border: 2px solid #8A2BE2;
+}
+
+.Movie {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.Movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Movie-book {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 25px;
+}
+
+.movie-title {
+    color: #00FFFF;
+    font-size: 2.5em;
+    font-family: Limelight, cursive;
+    font-weight: 400;
+}
+
+.info-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 1em;
+    font-family: Lexend Deca, sans-serif;
+}
+
+.info-item {
+    flex: 1 1 120px;
+    min-width: 100px;
+    font-weight: 400;
+}
+
+/* Description Section */
+.description {
+    font-size: 1.1em;
+    font-family: Lexend Deca, sans-serif;
+    line-height: 1.5;
+}
+
+/* Tickets Button */
+.tickets-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #451671;
+    border-radius: 5px;
+    color: #C0C0C0;
+    font-size: 1.5em;
+    font-family: Limelight, cursive;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Reviews Section */
+.reviews-section {
+    background: #000;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    gap: 20px;
+}
+
+.reviews-title {
+    color: #8A2BE2;
+    font-size: 2.5em;
+    font-family: Limelight, cursive;
+}
+
+.write-review {
+    width: 95%;
+    align-self: center;
+    padding: 10px;
+    margin: 10px;
+    background: #151515;
+    border: 1px solid #451671;
+    color: #C0C0C0;
+    font-size: 1.25em;
+    font-family: Lexend Mega, sans-serif;
+    border-radius: 5px;
+}
+
+.review-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.review-rating {
+    color: #00FFFF;
+}
+
+.stars{
+    color: #C0C0C0;
+}
 /* Responsive Styles */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 920px) {
     .nav {
         display: none;
     }
