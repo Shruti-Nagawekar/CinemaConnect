@@ -843,6 +843,7 @@ body {
 
     .Movie{
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
