@@ -347,54 +347,55 @@ body {
 }
 
 
-        /* Button Styling */
-        .button {
-            width: 375px;
-            height: 65px;
-            background: #451671;
-            color: #C0C0C0;
-            border-radius: 50px;
-            text-align: center;
-            line-height: 65px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 24px;
-            margin-top: 20px;
-        }
+/* Button Styling */
+.button {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    color: #C0C0C0;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+}
 
-        /* Additional Links */
-        .link-text {
-            font-family: 'Limelight', sans-serif;
-            color: #C0C0C0;
-            text-align: center;
-            margin-top: 10px;
-        }
+/* Additional Links */
+.link-text {
+    font-family: 'Limelight', sans-serif;
+    color: #C0C0C0;
+    text-align: center;
+    margin-top: 10px;
+}
 
-        .forgot-password, .new-account {
-            color: #00FFFF;
-            font-size: 20px;
-            cursor: pointer;
-        }
+.forgot-password, .new-account {
+    color: #00FFFF;
+    font-size: 20px;
+    cursor: pointer;
+}
 
-        /* Checkbox */
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
+/* Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
 
-        .checkbox {
-            width: 30px;
-            height: 30px;
-            background: rgba(247, 245, 251, 0.75);
-            border: 1px solid #00FFFF;
-            margin-right: 10px;
-        }
+.checkbox {
+    width: 30px;
+    height: 30px;
+    background: rgba(247, 245, 251, 0.75);
+    border: 1px solid #00FFFF;
+    margin-right: 10px;
+}
 
-        .checkbox-label {
-            font-family: 'Limelight', sans-serif;
-            color: #C0C0C0;
-            font-size: 32px;
-        }
+.checkbox-label {
+    font-family: 'Limelight', sans-serif;
+    color: #C0C0C0;
+    font-size: 32px;
+}
+
 /* General Login Container */
 .login-container {
     position: absolute;
@@ -444,232 +445,243 @@ body {
 }
 
 
-        /* Order Container */
-        .order-container {
-            position: flex;
-            width: 1440px;
-            height: 1024px;
-            background: #151515;
-        }
+/* Order Container */
+.order-container {
+    position: flex;
+    width: 1440px;
+    height: 1024px;
+    background: #151515;
+}
 
-        /* Shopping Cart */
-        .shopping-cart {
-            position: absolute;
-            width: 400px;
-            height: 75px;
-            left: 257px;
-            top: 171px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 48px;
-            color: #00FFFF;
-        }
+/* Shopping Cart */
+.shopping-cart {
+    position: absolute;
+    width: 400px;
+    height: 75px;
+    left: 257px;
+    top: 171px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 48px;
+    color: #00FFFF;
+}
 
-        /* Rectangle 7 */
-        .rectangle-7 {
-            position: absolute;
-            width: 280px;
-            height: 50px;
-            left: 825px;
-            top: 878px;
-            border: 5px solid #451671;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-            border-radius: 50px;
-        }
+/* Rectangle 7 */
+.rectangle-7 {
+    position: absolute;
+    width: 280px;
+    height: 50px;
+    left: 825px;
+    top: 878px;
+    border: 5px solid #451671;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 50px;
+}
 
-        /* Rectangle 24 */
-        .rectangle-24 {
-            position: absolute;
-            width: 280px;
-            height: 50px;
-            left: 825px;
-            top: 800px;
-            background: #451671;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 50px;
-        }        
+/* Rectangle 24 */
+.rectangle-24 {
+    position: absolute;
+    width: 280px;
+    height: 50px;
+    left: 825px;
+    top: 800px;
+    background: #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}        
 
-        /* Order Summary */
-        .order-summary {
-            position: absolute;
-            width: 320px;
-            height: 24px;
-            left: 257px;
-            top: 300px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 25px;
-            color: #C0C0C0;
-        }
+/* Order Summary */
+.order-summary {
+    position: absolute;
+    width: 320px;
+    height: 24px;
+    left: 257px;
+    top: 300px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    color: #C0C0C0;
+}
 
-        /* Movie Title and Date */
-        .movie-details {
-            position: absolute;
-            width: 330px;
-            left: 263px;
-            top: 350px; /* Updated to position it below the Order Summary */
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 20px;
-            color: #00FFFF;
-        }
+/* Movie Title and Date */
+.movie-details {
+    position: absolute;
+    width: 330px;
+    left: 263px;
+    top: 350px; /* Updated to position it below the Order Summary */
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #00FFFF;
+}
 
-        /* Individual Line of Movie Details */
-        .movie-details div {
-            margin-bottom: 7px;
-        }
+/* Individual Line of Movie Details */
+.movie-details div {
+    margin-bottom: 7px;
+}
 
-        /* Styling specific lines */
-        .movie-details .date-time, 
-        .movie-details .theater-address, 
-        .movie-details .seat {
-            color: #C0C0C0;
-        }
+/* Styling specific lines */
+.movie-details .date-time, 
+.movie-details .theater-address, 
+.movie-details .seat {
+    color: #C0C0C0;
+}
 
-        /* Items in Cart */
-        .items-in-cart {
-            position: absolute;
-            width: 450px;
-            height: 45px;
-            left: 275px;
-            top: 291px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 20px;
-            color: #000000;
-        }
+/* Items in Cart */
+.items-in-cart {
+    position: absolute;
+    width: 450px;
+    height: 45px;
+    left: 275px;
+    top: 291px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #000000;
+}
 
-        /* Price */
-        .price {
-            position: absolute;
-            width: 115px;
-            height: 35px;
-            left: 973px;
-            top: 650px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 30px;
-            color: #C0C0C0;
-            text-align: right;
-        }
+/* Price */
+.price {
+    position: absolute;
+    width: 115px;
+    height: 35px;
+    left: 973px;
+    top: 650px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #C0C0C0;
+    text-align: right;
+}
 
-        /* Checkout Button */
-        .checkout-button {
-            position: absolute;
-            width: 350px;
-            height: 55px;
-            left: 790px;
-            top: 800px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 20px;
-            color: #C0C0C0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Checkout Button */
+.checkout-button {
+    position: absolute;
+    width: 350px;
+    height: 55px;
+    left: 790px;
+    top: 800px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 20px;
+    color: #C0C0C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        /* Keep Shopping Button */
-        .keep-shopping {
-            position: absolute;
-            width: 350px;
-            height: 55px;
-            left: 790px;
-            top: 878px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 20px;
-            color: #451671;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Keep Shopping Button */
+.keep-shopping {
+    position: absolute;
+    width: 350px;
+    height: 55px;
+    left: 790px;
+    top: 878px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 20px;
+    color: #451671;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        /* Order Details */
-        .order-details {
-            position: absolute;
-            width: 525px;
-            height: 95px;
-            left: 218px;
-            top: 161px;
-            font-family: 'Limelight', sans-serif;
-            font-size: 64px;
-            color: #00FFFF;
-        }
+/* Order Details */
+.order-details {
+    position: absolute;
+    width: 525px;
+    height: 95px;
+    left: 218px;
+    top: 161px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 64px;
+    color: #00FFFF;
+}
 
-        /* Thank you message */
-        .thank-you-message {
-            position: absolute;
-            width: 1046px;
-            height: 125px;
-            left: 218px;
-            top: 256px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 32px;
-            color: #C0C0C0;
-        }
+/* Thank you message */
+.thank-you-message {
+    position: absolute;
+    width: 1046px;
+    height: 125px;
+    left: 218px;
+    top: 256px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #C0C0C0;
+}
 
-        /* Confirmation Rectangle */
-        .rectangle-23 {
-            position: absolute;
-            width: 1046px;
-            height: 250px;
-            left: 218px;
-            top: 381px;
-            background: #000000;
-            border: 1px solid #451671;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
-        }
+/* Confirmation Rectangle */
+.rectangle-23 {
+    position: absolute;
+    width: 1046px;
+    height: 250px;
+    left: 218px;
+    top: 381px;
+    background: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
 
-        /* Movie Ticket */
-        .movie-ticket {
-            position: absolute;
-            left: 412px;
-            top: 20px;
-            width: 300px;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            color: #FFFFFF;
-        }
+/* Movie Ticket */
+.movie-ticket {
+    position: absolute;
+    left: 412px;
+    top: 20px;
+    width: 300px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #FFFFFF;
+}
 
-        /* Confirmation Number */
-        .confirmation-number {
-            position: absolute;
-            width: 647px;
-            height: 86px;
-            left: 412px;
-            top: 550px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 400;
-            font-size: 20px;
-            text-align: center;
-            color: #C0C0C0;
-        }
+/* Confirmation Number */
+.confirmation-number {
+    position: absolute;
+    width: 647px;
+    height: 86px;
+    left: 412px;
+    top: 550px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #C0C0C0;
+}
 
-        /* Movie Details */
-        .movie-details {
-            position: absolute;
-            width: 450px;
-            height: 225px;
-            left: 513px;
-            top: 698px;
-            font-family: 'Lexend Deca', sans-serif;
-            font-weight: 800;
-            font-size: 32px;
-            color: #00FFFF;
-        }
+/* Movie Details */
+.movie-details {
+    position: absolute;
+    width: 450px;
+    height: 225px;
+    left: 513px;
+    top: 698px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #00FFFF;
+}
 
-        /* Rectangle for Movie Details */
-        .rectangle-14 {
-            position: absolute;
-            width: 245px;
-            height: 275px;
-            left: 218px;
-            top: 674px;
-            background: #C0C0C0;
-            border: 1px solid #451671;
-        }
+/* Rectangle for Movie Details */
+.rectangle-14 {
+    position: absolute;
+    width: 245px;
+    height: 275px;
+    left: 218px;
+    top: 674px;
+    background: #C0C0C0;
+    border: 1px solid #451671;
+}
 
+.Add-Movie-Button{
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    color: #C0C0C0;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 24px;
+}
 /* Responsive Styles */
 @media screen and (max-width: 800px) {
     .nav {
