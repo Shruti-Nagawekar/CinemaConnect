@@ -313,13 +313,15 @@ body {
 /* Input Fields */
 .input-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-direction: row;
     margin-bottom: 20px;
     gap:15px;
+    flex-wrap: wrap;
 }
 
 .input-field {
-    width: 48%;
+    width: 43%;
     height: 55px;
     background: #151515;
     border: 3px solid #451671;
@@ -338,7 +340,7 @@ body {
     margin-top: 5px;
     margin-bottom: 20px;
     text-align: left;
-    padding-left: 15px;
+    padding-left: 50%;
 }
 
 /* Button */
@@ -1056,6 +1058,14 @@ body {
 
     .bookTiket-button-container {
         margin-left: 0;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+
+    .password-instructions {
+        padding-left: 0%;
     }
 }
 
