@@ -58,7 +58,8 @@ element
 
 body {
     font-family: Limelight, sans-serif;
-    background-color: #151515;
+    height: 100%;
+    background-color: black;
     color: #C0C0C0;
     padding: 0px;
     margin:0px;
@@ -204,6 +205,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #151515;
 }
 
 /* Search Bar */
@@ -285,13 +287,17 @@ body {
 
 
 .register-container {
-    width: 900px;
-    background: #000;
-    border-radius: 5px;
+    background-color: #000000;
+    border: 1px solid #451671;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 30px;
-    margin-top: 80px;
-    justify-self: center;                                <!-- horizontle position of div -->
+    border-radius: 15px;
+    padding: 20px;
+    margin: 100px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;                              <!-- horizontle position of div -->
 }
 
 /* Title */
@@ -408,21 +414,17 @@ body {
 
 /* General Login Container */
 .login-container {
-    position: absolute;
-    width: 548px;
-    height: 614px;
-    left: 50%;
-    top: 242px;
-    transform: translateX(-50%);
-    background: #000000;
-    border: 1px solid #7C8FCD;
+    background-color: #000000;
+    border: 1px solid #451671;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding: 20px;
+    margin: 100px;
     display: flex;
+    justify-self: center;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 } 
 
 /* Cart Option */
@@ -831,6 +833,56 @@ body {
 .stars{
     color: #C0C0C0;
 }
+
+.Theater-card-container{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #000000;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+}
+
+.Theater-card{
+    width: 400px;
+    height: 75px;
+    border-radius: 70px;
+    border: 1px solid #8400FF;
+    background: #151515;
+    text-align: center;
+    padding: 25px;
+    margin: 30px;
+}
+
+.Admin-container{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #000000;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+}
+
+.Admin-card{
+    width: 400px;
+    height: 75px;
+    border-radius: 70px;
+    border: 1px solid #8400FF;
+    background: #151515;
+    text-align: center;
+    padding: 25px;
+    margin: 30px;
+}
+
+
 /* Responsive Styles */
 @media screen and (max-width: 920px) {
     .nav {
