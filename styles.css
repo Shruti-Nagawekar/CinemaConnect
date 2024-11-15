@@ -462,132 +462,120 @@ element
     text-align: center;
 }
 
+/*shoping cart*/
+    /* Order Container */
+    .order-container {
+        position: flex;
+        width: 100%;
+        background: #151515;
+        display:flex;
+        justify-content: center;
+    }
 
-/* Order Container */
-.order-container {
-    position: flex;
-    width: 1440px;
-    height: 1024px;
-    background: #151515;
-}
+    /* Rectangle 7 */
+    .HollowButton{
+        justify-content: center;
+        margin-left: 45%; /* Align button to the right */
+        width: 280px;
+        height: 50px;
+        margin: 20px;
+        border: 5px solid #8A2BE2;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 50px;
+        justify-self: right;
+    }
 
-/* Shopping Cart */
-.shopping-cart {
-    position: absolute;
-    width: 400px;
-    height: 75px;
-    left: 257px;
-    top: 171px;
-    font-family: 'Limelight', sans-serif;
-    font-size: 48px;
-    color: #00FFFF;
-}
+    /* Rectangle 24 */
+    .orderButtoon{
+        justify-content: center;
+        background-color: #451671;
+        margin-left: 45%; /* Align button to the right */
+        width: 350px;
+        height: 55px;
+        margin: 20px;
+        border: 5px solid #C0C0C0;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 50px;
+        justify-self: right;
+    }        
 
-/* Rectangle 7 */
-.rectangle-7 {
-    position: absolute;
-    width: 280px;
-    height: 50px;
-    left: 825px;
-    top: 878px;
-    border: 5px solid #451671;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 50px;
-}
+    /* Order Summary */
+    .order-summary {
+        width:100%;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 800;
+        font-size: 25px;
+        color: #C0C0C0;
+        margin: 50px;
+    }
 
-/* Rectangle 24 */
-.rectangle-24 {
-    position: absolute;
-    width: 280px;
-    height: 50px;
-    left: 825px;
-    top: 800px;
-    background: #451671;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-}        
+    .order-summary a{
+        width:100%;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 800;
+        font-size: 25px;
+        color: #C0C0C0;
+        padding:50px;
+    }
+    /* Individual Line of Movie Details */
+    .movie-details div {
+        margin-bottom: 7px;
+    }
 
-/* Order Summary */
-.order-summary {
-    position: absolute;
-    width: 320px;
-    height: 24px;
-    left: 257px;
-    top: 300px;
-    font-family: 'Lexend Deca', sans-serif;
-    font-weight: 800;
-    font-size: 25px;
-    color: #C0C0C0;
-}
+    /* Styling specific lines */
+    .movie-details .date-time, 
+    .movie-details .theater-address, 
+    .movie-details .seat {
+        color: #C0C0C0;
+    }
 
-/* Individual Line of Movie Details */
-.movie-details div {
-    margin-bottom: 7px;
-}
+    /* Items in Cart */
+    .items-in-cart {
+        width: 450px;
+        height: 45px;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: #000000;
+    }
 
-/* Styling specific lines */
-.movie-details .date-time, 
-.movie-details .theater-address, 
-.movie-details .seat {
-    color: #C0C0C0;
-}
+    /* Price */
+    .price {
+        width: 115px;
+        height: 35px;
+        margin: 50px;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 800;
+        font-size: 30px;
+        color: #C0C0C0;
+        text-align: right;
+        justify-self: right;
+    }
 
-/* Items in Cart */
-.items-in-cart {
-    position: absolute;
-    width: 450px;
-    height: 45px;
-    left: 275px;
-    top: 291px;
-    font-family: 'Lexend Deca', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    color: #000000;
-}
+    /* Checkout Button */
+    .checkout-button {
+        position: absolute;
+        width: 350px;
+        height: 55px;
+        font-family: 'Limelight', sans-serif;
+        font-size: 20px;
+        color: #C0C0C0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-/* Price */
-.price {
-    position: absolute;
-    width: 115px;
-    height: 35px;
-    left: 973px;
-    top: 650px;
-    font-family: 'Lexend Deca', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-    color: #C0C0C0;
-    text-align: right;
-}
-
-/* Checkout Button */
-.checkout-button {
-    position: absolute;
-    width: 350px;
-    height: 55px;
-    left: 790px;
-    top: 800px;
-    font-family: 'Limelight', sans-serif;
-    font-size: 20px;
-    color: #C0C0C0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Keep Shopping Button */
-.keep-shopping {
-    position: absolute;
-    width: 350px;
-    height: 55px;
-    left: 790px;
-    top: 878px;
-    font-family: 'Limelight', sans-serif;
-    font-size: 20px;
-    color: #451671;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    /* Keep Shopping Button */
+    .keep-shopping {
+        width: 350px;
+        height: 55px;
+        font-family: 'Limelight', sans-serif;
+        font-size: 20px;
+        color: #8A2BE2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 /*Order Confermation*/
 
