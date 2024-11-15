@@ -882,6 +882,149 @@ body {
     margin: 30px;
 }
 
+/* Container */
+.BookTickets-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #151515;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Dividers */
+.divider {
+    width: 75%;
+    height: 1px;
+    margin: 25px 0;
+    align-self: center;
+    border: 1px solid #451671;
+}
+
+/* Show Times Text (Justified Left) */
+.show-times {
+    width: 100%;
+    padding-top: 50px;
+    color: #00FFFF;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    text-align: left; /* Align text to the left */
+    padding-left: 30%; /* Add some padding on the left */
+}
+
+/* Date Labels */
+.date-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.date {
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+/* Time Labels */
+.time-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.time {
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+/* Book Tickets */
+.book-tickets {
+    color: #00FFFF;
+    font-size: 64px;
+    font-family: Limelight;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+/* Button Container (Justify Right) */
+.bookTiket-button-container {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    margin-top: 50px;
+    margin-left: 45%; /* Align button to the right */
+}
+
+/* Ticket Selection (Row Layout) */
+.ticket-selection {
+    width: 450px;
+    display: flex;
+    flex-direction: row; /* Align in a row */
+    justify-content: space-between;
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding-top: 50px;
+    word-wrap: break-word;
+    text-align: center;
+    align-items: center;
+    margin-right: 45%; /* Align button to the right */
+}
+
+/* Ticket Number */
+.ticket-number {
+    width: 140px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px #CAC4D0 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ticket-number-content {
+    padding: 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.ticket-number-text {
+    text-align: center;
+    color: #4F4F4F;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 400;
+}
+
+
 
 /* Responsive Styles */
 @media screen and (max-width: 920px) {
