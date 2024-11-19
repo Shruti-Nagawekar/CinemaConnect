@@ -121,10 +121,19 @@
                 <a>Select Number of Tickets:</a>
                 <div class="ticket-number">
                     <div class="ticket-number-content">
-                        <div class="ticket-number-text">2</div>
+                        <!-- Replacing text with a number input -->
+                        <input 
+                            type="number" 
+                            class="ticket-number-input" 
+                            value="2" 
+                            min="1" 
+                            max="10" 
+                            step="1" 
+                            aria-label="Number of Tickets">
                     </div>
                 </div>
             </div>
+            
 
             <div class="bookTiket-button-container button">Buy Tickets</div>
         </div>

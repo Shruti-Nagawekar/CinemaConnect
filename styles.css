@@ -344,7 +344,7 @@ element
         justify-self: center;
         flex-direction: column;
         align-items: center;
-        justify-content: center;                              <!-- horizontle position of div -->
+        justify-content: center;                              
     }
 
     /* Title */
