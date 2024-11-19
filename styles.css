@@ -255,30 +255,47 @@ element
     }
 
 /* Search Bar */
-    .search-bar {
-        width: 75%;
-        height: 50px;
-        background-color: black;
-        border-radius: 25px;
-        border: 3px solid #451671;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        display: flex;
-        align-items: center;
-        padding-left: 20px;
-        margin: 25px;
-    }
+.search-bar {
+    width: 75%;
+    height: 50px;
+    background-color: black;
+    border-radius: 25px;
+    border: 3px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin: 25px;
+}
 
-    .search-bar .icon {
-        width: 40px;
-        height: 40px;
-        background-color: #8400FF;
-        border-radius: 50%;
-        margin-right: 30px;
-    }
+/* Icon Styling */
+.search-bar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #8400FF;
+    border-radius: 50%;
+    margin-right: 20px;
+}
 
-    .search-bar .text {
-        font-size: 36px;
-    }
+/* Input Field */
+.search-bar .search-input {
+    flex: 1; /* Allow the input to take the remaining space */
+    height: 90%; /* Fit within the search bar */
+    border: none; /* Remove default input border */
+    outline: none; /* Remove focus outline */
+    background-color: transparent; /* Transparent to match the bar */
+    color: white; /* Input text color */
+    font-size: 18px; /* Adjust text size */
+    font-family: 'Arial', sans-serif; /* Ensure readability */
+    padding-right: 20px; /* Add spacing for a balanced look */
+}
+
+/* Placeholder Text Styling */
+.search-bar .search-input::placeholder {
+    color: #AAAAAA; /* Subtle placeholder text color */
+    opacity: 0.8; /* Slightly faded */
+}
+    
 
 /* --- Home --- */
     /* Title and Movie Selection */
@@ -352,7 +369,6 @@ element
         font-size: 48px;
         text-align: center;
         color: #00FFFF;
-        border: 1px solid #F9F9F9;
         padding: 10px;
         margin-bottom: 30px;
     }
@@ -978,11 +994,12 @@ element
 }
 
 .ticket-number-content {
-    padding: 6px 12px;
+    width: 140px;
+    padding: 1px 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 1px;
 }
 
 .ticket-number-text {
@@ -1027,6 +1044,8 @@ element
         width: 100%;
     }
 
+    
+
     .password-instructions {
         padding-left: 0%;
     }
@@ -1040,4 +1059,125 @@ element
     .title-selection-container {
         justify-content: center;
     }
+}
+
+/* Payment */
+body {
+    margin: 0;
+    font-family: 'Limelight', sans-serif;
+    background-color: #151515;
+    color: #C0C0C0;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 111px;
+    background: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 65px;
+}
+
+.mbs {
+    font-size: 64px;
+    line-height: 78px;
+    color: #8A2BE2;
+    border: 2px solid #451671;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links > div {
+    margin: 0 15px;
+    font-size: 32px;
+    line-height: 39px;
+    color: #C0C0C0;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.sign-in {
+    font-size: 16px;
+    line-height: 19px;
+    color: #00FFFF;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 10px 20px;
+}
+
+.payment-container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.payment-title {
+    font-size: 64px;
+    line-height: 78px;
+    color: #00FFFF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-box {
+    width: 1250px;
+    height: 729px;
+    margin: 0 auto;
+    background: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 50px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-label {
+    font-size: 32px;
+    color: #C0C0C0;
+}
+
+.form-input {
+    width: 506px;
+    height: 69px;
+    background: #151515;
+    border: 3px solid #451671;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    padding: 10px;
+    color: #C0C0C0;
+}
+
+.pay-now-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pay-now-btn {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    border-radius: 50px;
+    font-size: 24px;
+    color: #C0C0C0;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
