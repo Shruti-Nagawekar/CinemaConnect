@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!--  -->
-<!-- html Start -->
-<html lang="en">        
+<html lang="en">
 
-<!-- Header(tabspace and imports) -->
 <head>
     <title>Book tickets</title>
 
@@ -13,13 +10,362 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- import Google icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Lexend+Deca:wght@400;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
 
-    <!-- import Style sheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- import Style sheet
+    <link rel="stylesheet" href="styles.css">-->
+
+    <style>
+        /* Header Section */
+        .header {
+            position: sticky;
+            top: 0;
+            max-width: 1200px;
+            background-color: black;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            padding: 0.5rem;
+            margin: 0 auto;
+
+        }
+
+        /* Logo */
+        .header-logo a {
+            font-family: 'Limelight', cursive;
+            font-size: 2.5rem;
+            color: #8A2BE2;
+            -webkit-text-stroke: 1px #C0C0C0;
+            /* Adds a white outline */
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #C0C0C0;
+            font-size: 1.5rem;
+            padding: 8px;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            color: #8400FF;
+        }
+
+        .nav .sign-in a {
+            color: #00FFFF;
+        }
+
+        .nav .sign-in a:hover {
+            color: #8400FF;
+        }
+
+        /* Sign-in Section */
+        .sign-in {
+            display: flex;
+            justify-self: right;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        #icon {
+            font-size: 54px;
+            color: #8400FF;
+        }
+
+        .sign-in span {
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .sign a {
+            width: 75px;
+            color: #00FFFF;
+        }
+
+        .nav-burggger-cart {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .burger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: #C0C0C0;
+            margin: 5px;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav a:hover {
+            color: #8400FF;
+        }
+
+        .mobile-nav a {
+            color: #C0C0C0;
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .mobile-nav .sign-in a {
+            color: #00FFFF;
+        }
+
+        .mobile-nav .sign-in a:hover {
+            color: #8400FF;
+        }
+
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #151515;
+            position: absolute;
+            top: 111px;
+            right: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .show-mobile-nav {
+            display: flex;
+        }
+
+        /* shopingCart */
+        .ShopingCart {
+            margin: 10px;
+        }
+
+        body {
+            font-family: 'Lexend Deca', sans-serif;
+            background-color: #000000;
+            color: #C0C0C0;
+            margin: 0;
+            padding: 0;
+            min-width: 320px;
+        }
+
+        .main-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-family: 'Limelight', cursive;
+            font-size: 2.5rem;
+            color: #00FFFF;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #151515;
+            border: 2px solid #451671;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1rem;
+            padding: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .search-input::placeholder {
+            color: #000000;
+            opacity: 0.7;
+        }
+
+        .search-bar .material-symbols-outlined {
+            color: #8A2BE2;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .BookTickets-container {
+            background-color: #151515;
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .BookTickets-container h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .theatre-select {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            background-color: #000000;
+            color: #C0C0C0;
+            border: 1px solid #451671;
+            border-radius: 0.25rem;
+            margin-bottom: 1.5rem;
+
+        }
+
+        .date-selector,
+        .time-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .date-item,
+        .time-item {
+            background-color: #000000;
+            border: 1px solid #451671;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .date-item:hover,
+        .date-item.active,
+        .time-item:hover,
+        .time-item.active {
+            background-color: #451671;
+        }
+
+        .ticket-selection-container label {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .ticket-selection-container {
+            background-color: #151515;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+
+        /* Counter Styles */
+        .ticket-counter {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--button-bg);
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+
+        .ticket-counter button {
+            background-color: #451671;
+            color: #C0C0C0;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .ticket-counter button:hover {
+            background-color: #8A2BE2;
+        }
+
+        .ticket-counter input {
+            background-color: #000000;
+            color: #C0C0C0;
+            border: 1px solid #451671;
+            padding: 10px;
+            font-size: 18px;
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-group button {
+            background-color: #000000;
+            color: #C0C0C0;
+            border: 1px solid #451671;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-group button:hover,
+        .button-group button.active {
+            background-color: #8A2BE2;
+        }
+
+        .book-ticket-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 1rem;
+            background-color: #451671;
+            color: #C0C0C0;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-ticket-button:hover {
+            background-color: #8A2BE2;
+        }
+
+        /* 
+       
+        .divider {
+            width: 75%;
+            height: 1px;
+            margin: 25px 0;
+            align-self: center;
+            border: 1px solid #451671;
+        }
+
+        */
+    </style>
 </head>
 <script src="funtions.js"></script>
+
 <body>
 
     <!-- Header Section -->
@@ -27,22 +373,22 @@
 
         <!-- Logo -->
         <div class="header-logo">
-            <a href = "Home.html">CC</a>
+            <a href="Home.html">CC</a>
         </div>
-        
-        <div class = "nav-burggger-cart">
+
+        <div class="nav-burggger-cart">
             <!-- Navigation Links -->
             <nav class="nav">
-                <a href = "MoviesList.html">Movies</sa>
-                <a href = "Theaters.html">Theaters</a>
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
+                    <span class="material-symbols-outlined" id="icon">
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
-                    <span>or</span>
-                    <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
+                    <span>/</span>
+                    <a class="create" href="create_acc.html">Sign up</a>
+                </div>
             </nav>
 
             <!-- Burgger menu (shown when screen small) -->
@@ -57,19 +403,19 @@
                 <a href="MoviesList.html">Movies</a>
                 <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
+                    <span class="material-symbols-outlined" id="icon">
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
                     <span>or</span>
                     <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
+                </div>
             </div>
 
             <!-- Shoping Cart -->
-            <div class = "ShopingCart">
+            <div class="ShopingCart">
                 <a href="ShopingCart.html">
-                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+                    <span class="material-symbols-outlined" id="icon" href="ShopingCart.html">
                         shopping_cart
                     </span>
                 </a>
@@ -80,57 +426,139 @@
 
     <!-- Main Section -->
     <main class="main-section">
-         
+
         <div class="section-title">Book Tickets</div>
 
         <!-- Search Bar -->
         <div class="search-bar">
-            <span class="material-symbols-outlined" id ="icon">
+            <span class="material-symbols-outlined">
                 search
             </span>
-            <input type="text" class="search-input" placeholder="Search Theaters">
+            <input type="text" placeholder="Search Theaters" aria-label="Search theaters">
         </div>
 
         <div class="BookTickets-container">
+            <h2>Select Theatre</h2>
+            <select class="theatre-select" id="theatreSelect" aria-placeholder="Choose a theatre">
+                <option value="">Choose a theatre</option>
+                <option value="theatre1">Lubbock</option>
+                <option value="theatre2">Amarillo</option>
+                <option value="theatre3">Levelland</option>
+                <option value="theatre3">Plainview</option>
+                <option value="theatre3">Snyder</option>
+                <option value="theatre3">Abilene</option>
+            </select>
 
-            <div class="show-times"><a>Show Times</a></div>
+            <h2>Show Dates</h2>
 
-            <div class="date-labels">
-                <div class="date">15 NOV</div>
-                <div class="date">16 NOV</div>
-                <div class="date">17 NOV</div>
-                <div class="date">18 NOV</div>
-                <div class="date">19 NOV</div>
+            <div class="date-selector" id="date-list">
+                <!-- <div class="date-item" tabindex="0" role="button">15 NOV</div>
+                <div class="date-item" tabindex="0" role="button">16 NOV</div>
+                <div class="date-item" tabindex="0" role="button">17 NOV</div>
+                <div class="date-item" tabindex="0" role="button">18 NOV</div>
+                <div class="date-item" tabindex="0" role="button">19 NOV</div> -->
             </div>
 
             <div class="divider"></div>
 
-            <div class="time-labels">
-                <div class="time">1:00pm</div>
-                <div class="time">2:00pm</div>
-                <div class="time">3:00pm</div>
-                <div class="time">4:00pm</div>
-                <div class="time">5:00pm</div>
-                <div class="time">6:00pm</div>
-                <div class="time">7:00pm</div>
+            <h2>Show Times</h2>
+            <div class="time-selector" id="time-list">
+                <!-- <div class="time-item" tabindex="0" role="button">1:00pm</div>
+                <div class="time-item" tabindex="0" role="button">2:00pm</div>
+                <div class="time-item" tabindex="0" role="button">3:00pm</div>
+                <div class="time-item" tabindex="0" role="button">4:00pm</div>
+                <div class="time-item" tabindex="0" role="button">5:00pm</div>
+                <div class="time-item" tabindex="0" role="button">6:00pm</div>
+                <div class="time-item" tabindex="0" role="button">7:00pm</div> -->
             </div>
 
             <div class="divider"></div>
 
-            <div class="ticket-selection">
-                <a>Select Number of Tickets:</a>
-                <div class="ticket-number">
-                    <div class="ticket-number-content">
-                        <input type="number" class="input-field" placeholder="1-10">
-                    </div>
+            <div class="ticket-selection-container">
+                <label for="ticketNumber">Select Number of Tickets:</label>
+                <div class="ticket-counter">
+                    <button id="decrement">-</button>
+                    <input type="number" id="counterInput" value="1" min="1" max="10" placeholder="1-10">
+                    <button id="increment">+</button>
                 </div>
             </div>
-            
 
-            <div class="bookTiket-button-container button">Buy Tickets</div>
+            <button class="book-ticket-button" onclick="window.location.href='ShoppingCart.html'">Buy Tickets</button>
         </div>
 
     </main>
-    
+    <script>
+
+        // Generating Dates
+        const dateList = document.getElementById('date-list'); // Reference to the date selector
+        const today = new Date();
+
+        // // Clear any existing dates
+        // dateList.innerHTML = '';
+
+        // Generate the next 5 days
+        for (let i = 0; i < 5; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i);
+            const dateItem = document.createElement('div');
+            dateItem.classList.add('date-item');
+            dateItem.textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+            // Add click event to handle selection
+            dateItem.addEventListener('click', () => {
+                document.querySelectorAll('.date-item').forEach(item => item.classList.remove('active'));
+                dateItem.classList.add('active');
+            });
+            dateList.appendChild(dateItem);
+        }
+
+        // Generating Times
+        const timeList = document.getElementById('time-list'); // Reference to the time selector
+        const times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM']; // Array of times
+
+        // // Clear existing times
+        // timeList.innerHTML = '';
+
+        // Loop through to create elements
+        times.forEach(time => {
+            const timeItem = document.createElement('div');
+            timeItem.classList.add('time-item');
+            timeItem.textContent = time;
+
+            // Add click event to handle selection
+            timeItem.addEventListener('click', () => {
+                document.querySelectorAll('.time-item').forEach(item => item.classList.remove('active'));
+                timeItem.classList.add('active');
+            });
+            timeList.appendChild(timeItem);
+        });
+
+        //Select number of tickets
+        const counterInput = document.getElementById('counterInput');
+        const decrementBtn = document.getElementById('decrement');
+        const incrementBtn = document.getElementById('increment');
+
+        decrementBtn.addEventListener('click', () => {
+            if (counterInput.value > 1) {
+                counterInput.value = parseInt(counterInput.value) - 1;
+            }
+        });
+
+        incrementBtn.addEventListener('click', () => {
+            if (counterInput.value < 10) {
+                counterInput.value = parseInt(counterInput.value) + 1;
+            }
+        });
+
+        counterInput.addEventListener('change', () => {
+            let value = parseInt(counterInput.value);
+            if (isNaN(value) || value < 1) {
+                counterInput.value = 1;
+            } else if (value > 10) {
+                counterInput.value = 10;
+            }
+        });
+    </script>
 </body>
+
 </html>
