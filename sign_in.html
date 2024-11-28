@@ -14,8 +14,121 @@
 
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .sign-in {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rectangle {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .register-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-field {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+
+        .link-text {
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+            .link-text:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
-<script src="funtions.js"></script>
+<script src="functions.js"></script>
 <body>
 
     <!-- Header Section -->
@@ -23,49 +136,34 @@
 
         <!-- Logo -->
         <div class="header-logo">
-            <a href = "Home.html">CC</a>
+            <a href="Home.html">CC</a>
         </div>
-        
-        <div class = "nav-burggger-cart">
+
+        <div class="nav-burger-cart">
             <!-- Navigation Links -->
             <nav class="nav">
-                <a href = "MoviesList.html">Movies</sa>
-                <a href = "Theaters.html">Theaters</a>
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
+                    <span class="material-symbols-outlined" id="icon">
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
                     <span>or</span>
                     <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
+                </div>
             </nav>
 
-            <!-- Burgger menu (shown when screen small) -->
+            <!-- Mobile Navigation Menu -->
             <div class="burger-menu" onclick="toggleMobileNav()">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
 
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav" id="mobileNav">
-                <a href="MoviesList.html">Movies</a>
-                <a href="Theaters.html">Theaters</a>
-                <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
-                        account_circle
-                    </span>
-                    <a class="sign" href="sign_in.html">Sign in</a>
-                    <span>or</span>
-                    <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
-            </div>
-
-            <!-- Shoping Cart -->
-            <div class = "ShopingCart">
+            <div class="ShopingCart">
                 <a href="ShopingCart.html">
-                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+                    <span class="material-symbols-outlined" id="icon">
                         shopping_cart
                     </span>
                 </a>
@@ -78,9 +176,9 @@
 
         <div class="login-container">
             <div class="rectangle">
-                <div class="register-title">Sign In</div> <!-- Moved inside .rectangle and styled to sit at top -->
+                <div class="register-title">Sign In</div>
 
-                <div class = "input-container">
+                <div class="input-container">
                     <input type="text" id="email" class="input-field" placeholder="Email Address">
                     <input type="password" id="password" class="input-field" placeholder="Password">
                 </div>
