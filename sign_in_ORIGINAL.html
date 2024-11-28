@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- import Google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- import Style sheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="funtions.js"></script>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href = "Home.html">CC</a>
+        </div>
+        
+        <div class = "nav-burggger-cart">
+            <!-- Navigation Links -->
+            <nav class="nav">
+                <a href = "MoviesList.html">Movies</sa>
+                <a href = "Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id ="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>            
+            </nav>
+
+            <!-- Burgger menu (shown when screen small) -->
+            <div class="burger-menu" onclick="toggleMobileNav()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav" id="mobileNav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id ="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>            
+            </div>
+
+            <!-- Shoping Cart -->
+            <div class = "ShopingCart">
+                <a href="ShopingCart.html">
+                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+                        shopping_cart
+                    </span>
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="main-section">
+
+        <div class="login-container">
+            <div class="rectangle">
+                <div class="register-title">Sign In</div> <!-- Moved inside .rectangle and styled to sit at top -->
+
+                <div class = "input-container">
+                    <input type="text" id="email" class="input-field" placeholder="Email Address">
+                    <input type="password" id="password" class="input-field" placeholder="Password">
+                </div>
+
+                <div class="checkbox-container">
+                    <div class="checkbox"></div>
+                    <div class="checkbox-label">Remember me</div>
+                </div>
+
+                <div class="button">Sign In</div>
+
+                <div class="link-text forgot-password">Forgot your Password?</div>
+                <div class="link-text">Reset Your Password</div>
+                <div class="link-text new-account">Don’t have an account?</div>
+                <div class="link-text">Create a New Account</div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
