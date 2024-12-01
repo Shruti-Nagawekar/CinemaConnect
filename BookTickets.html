@@ -487,8 +487,8 @@
             const selectedTime = document.querySelector('.time-item.active')?.textContent;
 
             const ticketCount = parseInt(document.getElementById('counterInput').value);
-            const movieId = "movie1"; // Hardcoded movie ID
-            const userId = "user1"; // Hardcoded user ID
+            const movieId = "movie1"; // Hardcoded movie ID REMOVE THIS AND ADD CORRECT
+            const userId = "user1"; // Hardcoded user ID REMOVE THIS AND ADD CORRECT
             const totalPrice = ticketCount * 10; // Assuming each ticket costs $10
 
             if (!selectedTheater || !selectedDate || !selectedTime) {
@@ -506,7 +506,8 @@
                     },
                     ticketId: `ticket_${Date.now()}`, // Unique ticket ID
                     totalPrice: totalPrice,
-                    userId: userId
+                    userId: userId,
+                    paymentStatus: false,   //WRITE A FUNCTION FOR THIS WHEN DOING PAYMENT
                 });
                 console.log("Booking successful with ID: ", bookingRef.id);
                 alert("Booking successful!");
@@ -519,7 +520,8 @@
                     date: selectedDate,
                     time: selectedTime,
                     ticketCount: ticketCount,
-                    totalPrice: totalPrice
+                    totalPrice: totalPrice,
+                    userId: userId //Change this
                 }));
 
                 // Redirect to confirmation page

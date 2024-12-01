@@ -73,7 +73,25 @@
         </div>
     </main>
 
-    <script>
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: " movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         // Retrieve booking details from local storage
         const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
 
@@ -93,6 +111,31 @@
                 height: 100,       // Barcode height
                 displayValue: false // Display text below barcode
             });
+
+            async function track() {
+                try {
+                    // Generate ticket number after payment is successful
+                    const ticketRef = await addDoc(collection(db, "tickets"), {
+                        bookingId: confirmationNumber,
+                        movieId: bookingDetails.movieId,
+                        numSeats: bookingDetails.ticketCount,
+                        totalPrice: bookingDetails.totalPrice
+                    });
+
+                    // Get a reference to the user document
+                    const userRef = doc(db, "users", bookingDetails.userId);
+
+                    // Update the user document by adding the booking ID to the bookings array
+                    await updateDoc(userRef, {
+                        bookings: arrayUnion(ticketRef.id) // Use the ID of the newly created ticket
+                    });
+
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                }
+            }
+
+            track();
 
         } else {
             // Handle case where no booking details are found
