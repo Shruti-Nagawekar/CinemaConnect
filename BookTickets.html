@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Lexend+Deca:wght@400;700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-
+    <script type="module" src="firebase.js"></script>
     <!-- import Style sheet
     <link rel="stylesheet" href="styles.css">-->
 
@@ -386,8 +386,8 @@
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
-                    <span>/</span>
-                    <a class="create" href="create_acc.html">Sign up</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
                 </div>
             </nav>
 
@@ -414,7 +414,7 @@
 
             <!-- Shoping Cart -->
             <div class="ShopingCart">
-                <a href="ShopingCart.html">
+                <a href="ShoppingCart.html">
                     <span class="material-symbols-outlined" id="icon" href="ShopingCart.html">
                         shopping_cart
                     </span>
@@ -426,45 +426,24 @@
 
     <!-- Main Section -->
     <main class="main-section">
-
         <div class="section-title">Book Tickets</div>
-
         <div class="BookTickets-container">
             <h2>Select Theatre</h2>
             <select class="theatre-select" id="theatreSelect" aria-placeholder="Choose a theatre">
                 <option value="">Choose a theatre</option>
-                <option value="theatre1">Lubbock</option>
-                <option value="theatre2">Amarillo</option>
-                <option value="theatre3">Levelland</option>
-                <option value="theatre3">Plainview</option>
-                <option value="theatre3">Snyder</option>
-                <option value="theatre3">Abilene</option>
+                <option value="Lubbock">Lubbock</option>
+                <option value="Amarillo">Amarillo</option>
+                <option value="Levelland">Levelland</option>
+                <option value="Plainview">Plainview</option>
+                <option value="Snyder">Snyder</option>
+                <option value="Abilene">Abilene</option>
             </select>
 
             <h2>Show Dates</h2>
-
-            <div class="date-selector" id="date-list">
-                <!-- <div class="date-item" tabindex="0" role="button">15 NOV</div>
-                <div class="date-item" tabindex="0" role="button">16 NOV</div>
-                <div class="date-item" tabindex="0" role="button">17 NOV</div>
-                <div class="date-item" tabindex="0" role="button">18 NOV</div>
-                <div class="date-item" tabindex="0" role="button">19 NOV</div> -->
-            </div>
-
-            <div class="divider"></div>
+            <div class="date-selector" id="date-list"></div>
 
             <h2>Show Times</h2>
-            <div class="time-selector" id="time-list">
-                <!-- <div class="time-item" tabindex="0" role="button">1:00pm</div>
-                <div class="time-item" tabindex="0" role="button">2:00pm</div>
-                <div class="time-item" tabindex="0" role="button">3:00pm</div>
-                <div class="time-item" tabindex="0" role="button">4:00pm</div>
-                <div class="time-item" tabindex="0" role="button">5:00pm</div>
-                <div class="time-item" tabindex="0" role="button">6:00pm</div>
-                <div class="time-item" tabindex="0" role="button">7:00pm</div> -->
-            </div>
-
-            <div class="divider"></div>
+            <div class="time-selector" id="time-list"></div>
 
             <div class="ticket-selection-container">
                 <label for="ticketNumber">Select Number of Tickets:</label>
@@ -475,18 +454,88 @@
                 </div>
             </div>
 
-            <button class="book-ticket-button" onclick="window.location.href='ShoppingCart.html'">Buy Tickets</button>
+            <button class="book-ticket-button">Buy Tickets</button>
         </div>
-
     </main>
-    <script>
+
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.firebasestorage.app",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // ```javascript
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Function to handle booking
+        async function handleBooking() {
+            const theaterSelect = document.getElementById('theatreSelect');
+            const selectedTheater = theaterSelect.value;
+
+            const selectedDate = document.querySelector('.date-item.active')?.textContent;
+            const selectedTime = document.querySelector('.time-item.active')?.textContent;
+
+            const ticketCount = parseInt(document.getElementById('counterInput').value);
+            const movieId = "movie1"; // Hardcoded movie ID REMOVE THIS AND ADD CORRECT
+            const userId = "user1"; // Hardcoded user ID REMOVE THIS AND ADD CORRECT
+            const totalPrice = ticketCount * 10; // Assuming each ticket costs $10
+
+            if (!selectedTheater || !selectedDate || !selectedTime) {
+                alert("Please select a theater, date, and time.");
+                return;
+            }
+
+            try {
+                const bookingRef = await addDoc(collection(db, "bookings"), {
+                    movieId: movieId,
+                    showtimes: {
+                        theater: selectedTheater,
+                        date: selectedDate,
+                        time: selectedTime
+                    },
+                    ticketId: `ticket_${Date.now()}`, // Unique ticket ID
+                    totalPrice: totalPrice,
+                    userId: userId,
+                    paymentStatus: false,   //WRITE A FUNCTION FOR THIS WHEN DOING PAYMENT
+                });
+                console.log("Booking successful with ID: ", bookingRef.id);
+                alert("Booking successful!");
+
+                // Store booking details in local storage
+                localStorage.setItem('bookingDetails', JSON.stringify({
+                    confirmationNumber: bookingRef.id,
+                    movieId: movieId,
+                    theater: selectedTheater,
+                    date: selectedDate,
+                    time: selectedTime,
+                    ticketCount: ticketCount,
+                    totalPrice: totalPrice,
+                    userId: userId //Change this
+                }));
+
+                // Redirect to confirmation page
+                window.location.href = 'ShoppingCart.html';
+
+            } catch (error) {
+                console.error("Error adding booking: ", error);
+                alert("Error adding booking. Please try again.");
+            }
+        }
 
         // Generating Dates
-        const dateList = document.getElementById('date-list'); // Reference to the date selector
+        const dateList = document.getElementById('date-list');
         const today = new Date();
-
-        // // Clear any existing dates
-        // dateList.innerHTML = '';
 
         // Generate the next 5 days
         for (let i = 0; i < 5; i++) {
@@ -505,13 +554,9 @@
         }
 
         // Generating Times
-        const timeList = document.getElementById('time-list'); // Reference to the time selector
-        const times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM']; // Array of times
+        const timeList = document.getElementById('time-list');
+        const times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'];
 
-        // // Clear existing times
-        // timeList.innerHTML = '';
-
-        // Loop through to create elements
         times.forEach(time => {
             const timeItem = document.createElement('div');
             timeItem.classList.add('time-item');
@@ -525,7 +570,7 @@
             timeList.appendChild(timeItem);
         });
 
-        //Select number of tickets
+        // Select number of tickets
         const counterInput = document.getElementById('counterInput');
         const decrementBtn = document.getElementById('decrement');
         const incrementBtn = document.getElementById('increment');
@@ -550,7 +595,139 @@
                 counterInput.value = 10;
             }
         });
+
+        // Event listener for the booking button
+        document.querySelector('.book-ticket-button').addEventListener('click', handleBooking);
     </script>
+
+    <!-- CODE TO GENERATE THE DATE/TIMES FROM FIREBASE
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.firebasestorage.app",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function fetchShowtimes(theaterId) {
+            const dateList = document.getElementById('date-list');
+            const timeList = document.getElementById('time-list');
+
+            // Clear existing showtimes
+            dateList.innerHTML = '';
+            timeList.innerHTML = '';
+
+            console.log(`Fetching screens for theater: ${theaterId}`);
+
+            // Fetch screens for the selected theater
+            const screensCollection = collection(db, `theaters/Lubbock/screens`);
+            const screensSnapshot = await getDocs(screensCollection);
+
+            console.log("Screens Snapshot:", screensSnapshot); // Log the snapshot
+
+            if (screensSnapshot.empty) {
+                console.log("No screens found for this theater.");
+                return; // Exit if no screens found
+            }
+
+            // Loop through each screen document
+            screensSnapshot.forEach(async (screenDoc) => {
+                console.log(`Found screen: ${screenDoc.id}`); // Log found screens
+                const showtimesSnapshot = await getDocs(collection(db, `theaters/${theaterId}/screens/${screenDoc.id}/showtimes`));
+                const showtimes = {};
+
+                if (showtimesSnapshot.empty) {
+                    console.log(`No showtimes found for screen ${screenDoc.id}.`);
+                    return; // Exit if no showtimes found
+                }
+
+                // Loop through each showtime document
+                showtimesSnapshot.forEach(showtimeDoc => {
+                    const data = showtimeDoc.data();
+                    const date = data.date; // Ensure this is a valid date string
+                    const time = data.time; // Ensure this is a valid time string
+
+                    if (!showtimes[date]) {
+                        showtimes[date] = [];
+                    }
+                    showtimes[date].push(time);
+                });
+
+                console.log("Showtimes:", showtimes); // Log the showtimes data
+
+                // Populate date and time selectors
+                for (const [date, times] of Object.entries(showtimes)) {
+                    const dateItem = document.createElement('div');
+                    dateItem.classList.add('date-item');
+                    dateItem.textContent = new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                    dateItem.addEventListener('click', () => {
+                        document.querySelectorAll('.date-item').forEach(item => item.classList.remove('active'));
+                        dateItem.classList.add('active');
+
+                        // Populate time selector based on selected date
+                        timeList.innerHTML = '';
+                        times.forEach(time => {
+                            const timeItem = document.createElement('div');
+                            timeItem.classList.add('time-item');
+                            timeItem.textContent = time;
+
+                            timeItem.addEventListener('click', () => {
+                                document.querySelectorAll('.time-item').forEach(item => item.classList.remove('active'));
+                                timeItem.classList.add('active');
+                            });
+                            timeList.appendChild(timeItem);
+                        });
+                    });
+                    dateList.appendChild(dateItem);
+                }
+            });
+        }
+        // Event listener for theater selection
+        document.getElementById('theatreSelect').addEventListener('change', (event) => {
+            const selectedTheater = event.target.value;
+            if (selectedTheater) {
+                fetchShowtimes(selectedTheater);
+            }
+        });
+
+        // Select number of tickets
+        const counterInput = document.getElementById('counterInput');
+        const decrementBtn = document.getElementById('decrement');
+        const incrementBtn = document.getElementById('increment');
+
+        decrementBtn.addEventListener('click', () => {
+            if (counterInput.value > 1) {
+                counterInput.value = parseInt(counterInput.value) - 1;
+            }
+        });
+
+        incrementBtn.addEventListener('click', () => {
+            if (counterInput.value < 10) {
+                counterInput.value = parseInt(counterInput.value) + 1;
+            }
+        });
+
+        counterInput.addEventListener('change', () => {
+            let value = parseInt(counterInput.value);
+            if (isNaN(value) || value < 1) {
+                counterInput.value = 1;
+            } else if (value > 10) {
+                counterInput.value = 10;
+            }
+        });
+    </script> -->
 </body>
 
 </html>

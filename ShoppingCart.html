@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!--  -->
-<!-- html Start -->
-<html lang="en">        
+<html lang="en">
 
-<!-- Header(tabspace and imports) -->
 <head>
     <title>Cart</title>
 
@@ -19,7 +16,8 @@
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<script src="funtions.js"></script>
+<script src="functions.js"></script>
+
 <body>
 
     <!-- Header Section -->
@@ -27,22 +25,22 @@
 
         <!-- Logo -->
         <div class="header-logo">
-            <a href = "Home.html">CC</a>
+            <a href="Home.html">CC</a>
         </div>
-        
-        <div class = "nav-burggger-cart">
+
+        <div class="nav-burggger-cart">
             <!-- Navigation Links -->
             <nav class="nav">
-                <a href = "MoviesList.html">Movies</sa>
-                <a href = "Theaters.html">Theaters</a>
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
+                    <span class="material-symbols-outlined" id="icon">
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
                     <span>or</span>
                     <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
+                </div>
             </nav>
 
             <!-- Burgger menu (shown when screen small) -->
@@ -57,19 +55,19 @@
                 <a href="MoviesList.html">Movies</a>
                 <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
+                    <span class="material-symbols-outlined" id="icon">
                         account_circle
                     </span>
                     <a class="sign" href="sign_in.html">Sign in</a>
                     <span>or</span>
                     <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
+                </div>
             </div>
 
             <!-- Shoping Cart -->
-            <div class = "ShopingCart">
-                <a href="ShopingCart.html">
-                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
+            <div class="ShopingCart">
+                <a href="ShoppingCart.html">
+                    <span class="material-symbols-outlined" id="icon" href="ShopingCart.html">
                         shopping_cart
                     </span>
                 </a>
@@ -77,49 +75,57 @@
         </div>
 
     </header>
-
+    
     <!-- Main Section -->
     <main class="main-section">
-
-        <!-- Shopping Cart -->
         <div class="section-title">Shopping Cart</div>
 
         <div class="order-container">
-    
-    
-    
             <!-- Order Summary -->
             <div class="order-summary">
                 <a>Order Summary</a>
-    
+
                 <!-- Movie Title & Date (separated into lines) -->
                 <div class="movie-details">
-                    <div>Movie Title</div>
-                    <div class="date-time">Date at Time</div>
-                    <div class="theater-address">Theater Address</div>
-                    <div>Ticket(#)</div>
-                    <div class="seat">Seat: XX XX XX</div>
+                    <div id="movieTitle">Movie Title</div>
+                    <div class="date-time" id="dateTime">Date at Time</div>
+                    <div class="theater-address" id="theaterAddress">Theater Address</div>
+                    <div id="ticketCount">Ticket(#)</div>
+                    <div class="seat" id="seatDetails">Seat: XX XX XX</div>
                 </div>
-        
-                <!-- Price -->
-                <div class="price">$00.00</div>
-        
 
-                <!-- Rectangle 24 -->
+                <!-- Price -->
+                <div class="price" id="totalPrice">$00.00</div>
+
+                <!-- Checkout Button -->
                 <div class="orderButtoon button">
-                    <div class="checkout-button">Checkout</div>
+                    <div class="checkout-button" onclick="window.location.href='confirmation.html'">Checkout</div>
                 </div>
-                
-                <!-- Rectangle 7 -->
+
+                <!-- Keep Shopping Button -->
                 <div class="keep-shopping HollowButton">
                     <div class="keep-shopping">Keep Shopping</div>
                 </div>
-
             </div>
-            
         </div>
-       
     </main>
-    
+
+    <script>
+        // Retrieve booking details from local storage
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        if (bookingDetails) {
+            document.getElementById('movieTitle').textContent = `Movie Title: ${bookingDetails.movieId}`; // Replace with actual movie title if available
+            document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
+            document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
+            document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
+            document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
+            document.getElementById('totalPrice').textContent = `$${bookingDetails.totalPrice.toFixed(2)}`; // Display total price
+        } else {
+            // Handle case where no booking details are found
+            document.querySelector('.order-summary').innerHTML = '<div>No booking details found.</div>';
+        }
+    </script>
 </body>
+
 </html>

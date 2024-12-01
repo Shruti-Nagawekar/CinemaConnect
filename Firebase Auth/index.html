@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>CinemaConne</title>
+</head>
+<body class="grey darken-4">
+
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 deep-purple ">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <img src="Image/logo.svg" style="width: 82px; margin-top: 0px;">
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
+                </li>
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="black-text" id="logout">Logout</a>
+                </li>
+                <li class="logged-in" style="display:none;">
+                    <a href="#" class="black-text modal-trigger" data-target="modal-create">Create New Movie</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="black-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out" style="display:none;">
+                    <a href="#" class="black-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Sign up</h4><br />
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose password</label>
+                </div>
+                <button class="btn deep-purple darken-2 z-depth-0">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4><br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn deep-purple darken-2 z-depth-0">Login</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- CREATE MOVIE MODAL -->
+    <div id="modal-create" class="modal">
+        <div class="modal-content">
+            <h4>Create Guide</h4><br />
+            <form id="create-form">
+                <div class="input-field">
+                    <input type="text" id="title" required>
+                    <label for="title">Movie Title</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="genre" required>
+                    <label for="genre">Movie Genre</label>
+                </div>
+                <div class="input-field">
+                    <textarea id="runtime" class="materialize-textarea" required></textarea>
+                    <label for="runtime">Movie Runtime</label>
+                </div>
+                <button class="btn deep-purple darken-2 z-depth-0">Create</button>
+            </form>
+        </div>
+    </div>
+    <!-- Movie LIST -->
+    <div class="container" style="margin-top: 40px;">
+        <ul class="collapsible z-depth-0 Movie" style="border: none;">
+        </ul>
+    </div>
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account details</h4><br />
+            <div class="account-details"></div>
+        </div>
+    </div>
+    <!-- Firebase UMD SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase configuration
+        const config = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(config);
+
+        // Firestore and Auth References
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="Script/auth.js"></script>
+    <script src="Script/index.js"></script>
+</body>
+</html>
