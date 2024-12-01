@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -48,8 +50,7 @@
 
             <div class="Barcode">
                 <div class="movie-ticket">
-                    <img src="https://i.pinimg.com/originals/ef/02/9b/ef029b177618ee0dbf95033a08ac0f53.jpg"
-                        alt="Barcode" width="200">
+                    <svg id="barcode"></svg>
                 </div>
 
                 <div class="confirmation-number" id="confirmationNumber"></div>
@@ -83,6 +84,16 @@
             document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
             document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
             document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
+
+            // Generate barcode from confirmation number
+            const confirmationNumber = bookingDetails.confirmationNumber || '000000'; // Default if no confirmation number
+            JsBarcode("#barcode", confirmationNumber, {
+                format: "CODE128", // Barcode format
+                width: 2,          // Line width
+                height: 100,       // Barcode height
+                displayValue: false // Display text below barcode
+            });
+
         } else {
             // Handle case where no booking details are found
             document.querySelector('.confirmation').innerHTML = '<div>No booking details found.</div>';
