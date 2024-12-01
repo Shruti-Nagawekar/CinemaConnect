@@ -426,17 +426,7 @@
 
     <!-- Main Section -->
     <main class="main-section">
-
         <div class="section-title">Book Tickets</div>
-
-        <!-- Search Bar -->
-        <!-- <div class="search-bar">
-            <span class="material-symbols-outlined">
-                search
-            </span>
-            <input type="text" placeholder="Search Theaters" aria-label="Search theaters">
-        </div> -->
-
         <div class="BookTickets-container">
             <h2>Select Theatre</h2>
             <select class="theatre-select" id="theatreSelect" aria-placeholder="Choose a theatre">
@@ -450,29 +440,10 @@
             </select>
 
             <h2>Show Dates</h2>
-
-            <div class="date-selector" id="date-list">
-                <!-- <div class="date-item" tabindex="0" role="button">15 NOV</div>
-                <div class="date-item" tabindex="0" role="button">16 NOV</div>
-                <div class="date-item" tabindex="0" role="button">17 NOV</div>
-                <div class="date-item" tabindex="0" role="button">18 NOV</div>
-                <div class="date-item" tabindex="0" role="button">19 NOV</div> -->
-            </div>
-
-            <div class="divider"></div>
+            <div class="date-selector" id="date-list"></div>
 
             <h2>Show Times</h2>
-            <div class="time-selector" id="time-list">
-                <!-- <div class="time-item" tabindex="0" role="button">1:00pm</div>
-                <div class="time-item" tabindex="0" role="button">2:00pm</div>
-                <div class="time-item" tabindex="0" role="button">3:00pm</div>
-                <div class="time-item" tabindex="0" role="button">4:00pm</div>
-                <div class="time-item" tabindex="0" role="button">5:00pm</div>
-                <div class="time-item" tabindex="0" role="button">6:00pm</div>
-                <div class="time-item" tabindex="0" role="button">7:00pm</div> -->
-            </div>
-
-            <div class="divider"></div>
+            <div class="time-selector" id="time-list"></div>
 
             <div class="ticket-selection-container">
                 <label for="ticketNumber">Select Number of Tickets:</label>
@@ -483,18 +454,86 @@
                 </div>
             </div>
 
-            <button class="book-ticket-button" onclick="window.location.href='ShoppingCart.html'">Buy Tickets</button>
+            <button class="book-ticket-button">Buy Tickets</button>
         </div>
-
     </main>
-    <!-- <script>
+
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.firebasestorage.app",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // ```javascript
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Function to handle booking
+        async function handleBooking() {
+            const theaterSelect = document.getElementById('theatreSelect');
+            const selectedTheater = theaterSelect.value;
+
+            const selectedDate = document.querySelector('.date-item.active')?.textContent;
+            const selectedTime = document.querySelector('.time-item.active')?.textContent;
+
+            const ticketCount = parseInt(document.getElementById('counterInput').value);
+            const movieId = "movie1"; // Hardcoded movie ID
+            const userId = "user1"; // Hardcoded user ID
+            const totalPrice = ticketCount * 10; // Assuming each ticket costs $10
+
+            if (!selectedTheater || !selectedDate || !selectedTime) {
+                alert("Please select a theater, date, and time.");
+                return;
+            }
+
+            try {
+                const bookingRef = await addDoc(collection(db, "bookings"), {
+                    movieId: movieId,
+                    showtimes: {
+                        theater: selectedTheater,
+                        date: selectedDate,
+                        time: selectedTime
+                    },
+                    ticketId: `ticket_${Date.now()}`, // Unique ticket ID
+                    totalPrice: totalPrice,
+                    userId: userId
+                });
+                console.log("Booking successful with ID: ", bookingRef.id);
+                alert("Booking successful!");
+
+                // Store booking details in local storage
+                localStorage.setItem('bookingDetails', JSON.stringify({
+                    confirmationNumber: bookingRef.id,
+                    movieId: movieId,
+                    theater: selectedTheater,
+                    date: selectedDate,
+                    time: selectedTime,
+                    ticketCount: ticketCount,
+                    totalPrice: totalPrice
+                }));
+
+                // Redirect to confirmation page
+                window.location.href = 'ShoppingCart.html';
+
+            } catch (error) {
+                console.error("Error adding booking: ", error);
+                alert("Error adding booking. Please try again.");
+            }
+        }
 
         // Generating Dates
-        const dateList = document.getElementById('date-list'); // Reference to the date selector
+        const dateList = document.getElementById('date-list');
         const today = new Date();
-
-        // // Clear any existing dates
-        // dateList.innerHTML = '';
 
         // Generate the next 5 days
         for (let i = 0; i < 5; i++) {
@@ -513,13 +552,9 @@
         }
 
         // Generating Times
-        const timeList = document.getElementById('time-list'); // Reference to the time selector
-        const times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM']; // Array of times
+        const timeList = document.getElementById('time-list');
+        const times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'];
 
-        // // Clear existing times
-        // timeList.innerHTML = '';
-
-        // Loop through to create elements
         times.forEach(time => {
             const timeItem = document.createElement('div');
             timeItem.classList.add('time-item');
@@ -533,7 +568,7 @@
             timeList.appendChild(timeItem);
         });
 
-        //Select number of tickets
+        // Select number of tickets
         const counterInput = document.getElementById('counterInput');
         const decrementBtn = document.getElementById('decrement');
         const incrementBtn = document.getElementById('increment');
@@ -558,11 +593,12 @@
                 counterInput.value = 10;
             }
         });
-    </script> -->
 
+        // Event listener for the booking button
+        document.querySelector('.book-ticket-button').addEventListener('click', handleBooking);
+    </script>
 
-
-    <!-- CODE TO GENERATE THE DATE/TIMES FROM FIREBASE -->
+    <!-- CODE TO GENERATE THE DATE/TIMES FROM FIREBASE
     <script type="module">
         // Import Firestore functions
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -689,7 +725,7 @@
                 counterInput.value = 10;
             }
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

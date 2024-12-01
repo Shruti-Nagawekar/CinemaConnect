@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Confirmation Page</title>
 
@@ -15,110 +16,78 @@
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<script src="funtions.js"></script>
+
 <body>
 
     <!-- Header Section -->
     <header class="header">
-
-        <!-- Logo -->
         <div class="header-logo">
-            <a href = "Home.html">CC</a>
+            <a href="Home.html">CC</a>
         </div>
-        
-        <div class = "nav-burggger-cart">
-            <!-- Navigation Links -->
+
+        <div class="nav-burggger-cart">
             <nav class="nav">
-                <a href = "MoviesList.html">Movies</sa>
-                <a href = "Theaters.html">Theaters</a>
-                <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
-                        account_circle
-                    </span>
-                    <a class="sign" href="sign_in.html">Sign in</a>
-                    <span>or</span>
-                    <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
-            </nav>
-
-            <!-- Burgger menu (shown when screen small) -->
-            <div class="burger-menu" onclick="toggleMobileNav()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav" id="mobileNav">
                 <a href="MoviesList.html">Movies</a>
                 <a href="Theaters.html">Theaters</a>
                 <div class="sign-in">
-                    <span class="material-symbols-outlined" id ="icon">
-                        account_circle
-                    </span>
+                    <span class="material-symbols-outlined" id="icon">account_circle</span>
                     <a class="sign" href="sign_in.html">Sign in</a>
                     <span>or</span>
                     <a class="create" href="create_acc.html">Create an Account</a>
-                </div>            
-            </div>
-
-            <!-- Shoping Cart -->
-            <div class = "ShopingCart">
-                <a href="ShopingCart.html">
-                    <span class="material-symbols-outlined" id ="icon"  href="ShopingCart.html">
-                        shopping_cart
-                    </span>
-                </a>
-            </div>
+                </div>
+            </nav>
         </div>
-
     </header>
 
     <main class="main-section">
         <div class="section-title">Order Details</div>
 
         <div class="confirmation">
-        <!-- Order Details -->
-            
+            <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account, and
+                an email confirmation has been sent to the email address used to make the purchase.</div>
 
-            <!-- Thank You Message -->
-            <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account, and an email confirmation has been sent to the email address used to make the purchase.</div>
-
-            <!-- Confirmation Rectangle -->
             <div class="Barcode">
-                <!-- Barcode Image in Place of Movie Ticket Text -->
                 <div class="movie-ticket">
-                    <img src="https://i.pinimg.com/originals/ef/02/9b/ef029b177618ee0dbf95033a08ac0f53.jpg" alt="Barcode" width="200">
+                    <img src="https://i.pinimg.com/originals/ef/02/9b/ef029b177618ee0dbf95033a08ac0f53.jpg"
+                        alt="Barcode" width="200">
                 </div>
 
-                    <!-- Confirmation Number -->
-                <div class="confirmation-number">
-                    <div>Confirmation Number: 00000000000000</div>
-                    <div>Show your barcode at the theater podium to pick up your tickets.</div>
-                </div>
-
+                <div class="confirmation-number" id="confirmationNumber"></div>
+                <div>Show your barcode at the theater podium to pick up your tickets.</div>
             </div>
 
-            <div class = "ordered-movie-details">
-
-                <!-- Rectangle for Movie Details -->
+            <div class="ordered-movie-details">
                 <div class="Movie-image">
-                    <img src="empty.png" alt="poster" width="300">
+                    <img src="empty.png" alt="poster" width="300" id="moviePoster">
                 </div>
 
-                <!-- Movie Details -->
                 <div class="movie-details">
-                    <div>Movie Title</div>
-                    <div class="date-time">Date at Time</div>
-                    <div class="theater-address">Theater Address</div>
-                    <div>Ticket(#)</div>
-                    <div class="seat">Seat: XX XX XX</div>
+                    <div id="movieTitle">Movie Title</div>
+                    <div class="date-time" id="dateTime">Date at Time</div>
+                    <div class="theater-address" id="theaterAddress">Theater Address</div>
+                    <div id="ticketCount">Ticket(#)</div>
+                    <div class="seat" id="seatDetails">Seat: XX XX XX</div>
                 </div>
-
             </div>
         </div>
-        
     </main>
 
+    <script>
+        // Retrieve booking details from local storage
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        if (bookingDetails) {
+            document.getElementById('confirmationNumber').textContent = `Confirmation Number: ${bookingDetails.confirmationNumber}`;
+            document.getElementById('movieTitle').textContent = `Movie Title: ${bookingDetails.movieId}`; // Replace with actual movie title if available
+            document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
+            document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
+            document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
+            document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
+        } else {
+            // Handle case where no booking details are found
+            document.querySelector('.confirmation').innerHTML = '<div>No booking details found.</div>';
+        }
+    </script>
 </body>
+
 </html>
