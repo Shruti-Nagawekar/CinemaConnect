@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Movie Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+    </header>
+
+    <main class="main-section">
+        <!-- Registration Form Container -->
+        <div class="register-container">
+            <div class="register-title">Add A Movie</div>
+            
+            <!-- Input Fields -->
+            <div class="input-container">
+                <input type="text" id="movie-title" class="input-field" placeholder="Movie Title">
+                <textarea id="movie-description" class="input-field" placeholder="Synopsis"></textarea>
+                <input type="text" id="movie-cast" class="input-field" placeholder="Cast">
+                <input type="text" id="movie-genre" class="input-field" placeholder="Genre">
+                <input type="number" id="movie-runtime" class="input-field" placeholder="Duration (in minutes)">
+                <input type="text" id="movie-poster-url" class="input-field" placeholder="Poster URL">
+                <label>
+                    <input type="checkbox" id="movie-is-upcoming"> Is Upcoming
+                </label>
+            </div>
+            
+            <!-- Save Button -->
+            <div class="button-container">
+                <button id="add-movie-button" class="Add-Movie-Button">Save Changes</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase and Custom Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Add Movie Functionality
+        document.getElementById('add-movie-button').addEventListener('click', () => {
+            // Get input values
+            const title = document.getElementById('movie-title').value;
+            const description = document.getElementById('movie-description').value;
+            const cast = document.getElementById('movie-cast').value;
+            const genre = document.getElementById('movie-genre').value;
+            const runtime = document.getElementById('movie-runtime').value;
+            const posterURL = document.getElementById('movie-poster-url').value;
+            const isUpcoming = document.getElementById('movie-is-upcoming').checked;
+
+            // Validate input
+            if (!title || !description || !genre || !runtime || !posterURL) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Add movie to Firestore with auto-generated ID
+            db.collection('Movie').add({
+                Title: title,
+                Description: description,
+                Cast: cast,
+                Genre: genre,
+                Runtime: parseInt(runtime),
+                isUpcoming: isUpcoming,
+                posterURL: posterURL
+            })
+            .then(() => {
+                alert('Movie added successfully!');
+                // Redirect to Admin page
+                window.location.href = 'Admin.html';
+            })
+            .catch((error) => {
+                console.error('Error adding movie:', error);
+                alert('Failed to add movie. Please try again.');
+            });
+        });
+    </script>
+
+</body>
+</html>

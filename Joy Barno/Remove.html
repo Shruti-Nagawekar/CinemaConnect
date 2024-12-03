@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Remove Movies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+    </header>
+
+    <main class="main-section">
+        <!-- Title -->
+        <h1>Remove Movies</h1>
+        <p>Select the movies you want to remove and click "Confirm Remove".</p>
+
+        <!-- Movie List -->
+        <div id="movie-list-container" class="movie-list-container">
+            <!-- Movies from Firestore will be listed here -->
+        </div>
+
+        <!-- Confirm Remove Button -->
+        <div class="button-container">
+            <button id="confirm-remove-button" class="remove-movie-button">Confirm Remove</button>
+        </div>
+    </main>
+
+    <!-- Firebase and Custom Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Fetch Movies from Firestore and Display Them
+        const movieListContainer = document.getElementById('movie-list-container');
+        db.collection('Movie').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const movie = doc.data();
+                const movieId = doc.id;
+
+                // Create a checkbox for each movie
+                const movieItem = document.createElement('div');
+                movieItem.className = 'movie-item';
+                movieItem.innerHTML = `
+                    <input type="checkbox" class="movie-checkbox" id="${movieId}" value="${movieId}">
+                    <label for="${movieId}">${movie.Title}</label>
+                `;
+                movieListContainer.appendChild(movieItem);
+            });
+        }).catch((error) => {
+            console.error('Error fetching movies:', error);
+        });
+
+        // Confirm Remove Button Functionality
+        document.getElementById('confirm-remove-button').addEventListener('click', () => {
+            const selectedMovies = document.querySelectorAll('.movie-checkbox:checked');
+            if (selectedMovies.length === 0) {
+                alert('Please select at least one movie to remove.');
+                return;
+            }
+
+            // Remove selected movies from Firestore
+            const promises = [];
+            selectedMovies.forEach((checkbox) => {
+                const movieId = checkbox.value;
+                promises.push(db.collection('Movie').doc(movieId).delete());
+            });
+
+            Promise.all(promises)
+                .then(() => {
+                    alert('Selected movies have been removed.');
+                    window.location.href = 'Admin.html'; // Redirect to Admin page
+                })
+                .catch((error) => {
+                    console.error('Error removing movies:', error);
+                    alert('Failed to remove some movies. Please try again.');
+                });
+        });
+    </script>
+
+</body>
+</html>
