@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Confirmation Page</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- import Google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+    <!-- import Style sheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+
+        <div class="nav-burggger-cart">
+            <!-- Navigation Links -->
+            <nav class="nav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>
+            </nav>
+
+            <!-- Burgger menu (shown when screen small) -->
+            <div class="burger-menu" onclick="toggleMobileNav()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav" id="mobileNav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>
+            </div>
+
+            <!-- Shoping Cart -->
+            <div class="ShopingCart">
+                <a href="ShoppingCart.html">
+                    <span class="material-symbols-outlined" id="icon" href="ShopingCart.html">
+                        shopping_cart
+                    </span>
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="main-section">
+        <div class="section-title">Order History</div>
+
+        <div class="History">
+            <div class="ordered-movie-details">
+                <div class="Movie-image">
+                    <img src="empty.png" alt="poster" width="300" id="moviePoster">
+                </div>
+
+                <div class="movie-details">
+                    <div id="movieTitle">Movie Title</div>
+                    <div class="date-time" id="dateTime">Date at Time</div>
+                    <div class="theater-address" id="theaterAddress">Theater Address</div>
+                    <div id="ticketCount">Ticket(#)</div>
+                    <div class="seat" id="seatDetails">Seat: XX XX XX</div>
+                    <div class="Order-number">Order number: XXXXXXXXXXXX</div>
+                </div>
+            </div>
+
+            <div class="ordered-movie-details">
+                <div class="Movie-image">
+                    <img src="empty.png" alt="poster" width="300" id="moviePoster">
+                </div>
+
+                <div class="movie-details">
+                    <div id="movieTitle">Movie Title</div>
+                    <div class="date-time" id="dateTime">Date at Time</div>
+                    <div class="theater-address" id="theaterAddress">Theater Address</div>
+                    <div id="ticketCount">Ticket(#)</div>
+                    <div class="seat" id="seatDetails">Seat: XX XX XX</div>
+                    <div class="Order-number">Order number: XXXXXXXXXXXX</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <!-- <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: " movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Retrieve booking details from local storage
+        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+        if (bookingDetails) {
+            document.getElementById('confirmationNumber').textContent = `Confirmation Number: ${bookingDetails.confirmationNumber}`;
+            document.getElementById('movieTitle').textContent = `Movie Title: ${bookingDetails.movieId}`; // Replace with actual movie title if available
+            document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
+            document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
+            document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
+            document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
+
+            // Generate barcode from confirmation number
+            const confirmationNumber = bookingDetails.confirmationNumber || '000000'; // Default if no confirmation number
+            JsBarcode("#barcode", confirmationNumber, {
+                format: "CODE128", // Barcode format
+                width: 2,          // Line width
+                height: 100,       // Barcode height
+                displayValue: false // Display text below barcode
+            });
+
+            async function track() {
+                try {
+                    // Generate ticket number after payment is successful
+                    const ticketRef = await addDoc(collection(db, "tickets"), {
+                        bookingId: confirmationNumber,
+                        movieId: bookingDetails.movieId,
+                        numSeats: bookingDetails.ticketCount,
+                        totalPrice: bookingDetails.totalPrice
+                    });
+
+                    // Get a reference to the user document
+                    const userRef = doc(db, "users", bookingDetails.userId);
+
+                    // Update the user document by adding the booking ID to the bookings array
+                    await updateDoc(userRef, {
+                        bookings: arrayUnion(ticketRef.id) // Use the ID of the newly created ticket
+                    });
+
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                }
+            }
+
+            track();
+
+        } else {
+            // Handle case where no booking details are found
+            document.querySelector('.confirmation').innerHTML = '<div>No booking details found.</div>';
+        }
+    </script> -->
+</body>
+
+</html>
