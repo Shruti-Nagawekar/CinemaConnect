@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+        <div class="nav-burggger-cart">
+            <nav class="nav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div class="sign-in">
+                    <span class="material-symbols-outlined" id="icon">
+                        account_circle
+                    </span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="main-section">
+        <div class="login-container">
+            <div class="register-title">Sign In</div>
+            <div class="input-container">
+                <input type="text" id="email" class="input-field login-input-field" placeholder="Email Address">
+                <input type="password" id="password" class="input-field login-input-field" placeholder="Password">
+            </div>
+            <div class="checkbox-container">
+                <label>
+                    <input type="checkbox" id="admin-check"> Log in as Admin
+                </label>
+            </div>
+            <button class="button" id="sign-in-btn">Sign In</button>
+            <div class="link-text new-account">Don’t have an account? <a href="create_acc.html">Create a New Account</a></div>
+        </div>
+    </main>
+    <!-- Firebase Integration -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Sign-in function
+        document.getElementById('sign-in-btn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const isAdmin = document.getElementById('admin-check').checked;
+
+            if (isAdmin) {
+                // Check Admin credentials in Firestore
+                try {
+                    const adminSnapshot = await db.collection('Admin')
+                        .where('Email', '==', email)
+                        .where('password', '==', password)
+                        .get();
+
+                    if (!adminSnapshot.empty) {
+                        alert('Admin login successful!');
+                        localStorage.setItem('isAdmin', 'true');
+                        window.location.href = "Home.html";
+                    } else {
+                        alert('Invalid Admin credentials!');
+                    }
+                } catch (error) {
+                    console.error('Error checking Admin credentials:', error);
+                }
+            } else {
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        alert('User sign in successful!');
+                        localStorage.setItem('isAdmin', 'false');
+                        window.location.href = "Home.html";
+                    })
+                    .catch((error) => {
+                        alert(`Sign-in failed: ${error.message}`);
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
