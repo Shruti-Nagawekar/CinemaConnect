@@ -137,7 +137,7 @@
             document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
             document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
             document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
-            document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
+            document.getElementById('seatDetails').textContent = `Screen: ${bookingDetails.screen}`; // Replace with actual seat details if available
 
             // Generate barcode from confirmation number
             const confirmationNumber = bookingDetails.confirmationNumber || '000000'; // Default if no confirmation number
