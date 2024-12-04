@@ -103,7 +103,7 @@
                     <div class="date-time" id="dateTime">Date at Time</div>
                     <div class="theater-address" id="theaterAddress">Theater Address</div>
                     <div id="ticketCount">Ticket(#)</div>
-                    <div class="seat" id="seatDetails">Seat: XX XX XX</div>
+                    <div class="seat" id="screenDetails">Seat: XX XX XX</div>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
     <script type="module">
         // Import Firestore functions
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
         // Your Firebase configuration
         const firebaseConfig = {
@@ -130,14 +130,29 @@
 
         // Retrieve booking details from local storage
         const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+        const movieDetails = JSON.parse(localStorage.getItem('movieDetails'));
 
+        // async function fetchMovieName(movieId) {
+        //     const movieRef = doc(db, "Movie", movieId);
+        //     const movieDoc = await getDoc(movieRef);
+
+        //     if (movieDoc.exists()) {
+        //         const movieName = movieDoc.data().Title;
+        //         console.log("Movie Title: ", movie)
+        //         return movieName;
+        //     }
+        //     else {
+        //         console.error("No movie found with the given ID");
+        //     }
+        // }
+        console.log("Screen num: ", screen)
         if (bookingDetails) {
             document.getElementById('confirmationNumber').textContent = `Confirmation Number: ${bookingDetails.confirmationNumber}`;
-            document.getElementById('movieTitle').textContent = `Movie Title: ${bookingDetails.movieId}`; // Replace with actual movie title if available
+            document.getElementById('movieTitle').textContent = `Movie Title: ${movieDetails.movieName}`; // Replace with actual movie title if available
             document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
             document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
             document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
-            document.getElementById('seatDetails').textContent = `Screen: ${bookingDetails.screen}`; // Replace with actual seat details if available
+            document.getElementById('screenDetails').textContent = `Screen: ${bookingDetails.screen}`; // Replace with actual seat details if available
 
             // Generate barcode from confirmation number
             const confirmationNumber = bookingDetails.confirmationNumber || '000000'; // Default if no confirmation number

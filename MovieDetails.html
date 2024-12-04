@@ -183,22 +183,18 @@
                     const posterElement = document.getElementById("movie-poster");
                     posterElement.innerHTML = `<img src="${movie.posterURL}" alt="${movie.Title}" class="movie-poster">`;
 
+                    // Store movie ID and name together
+                    localStorage.setItem('movieDetails', JSON.stringify({
+                        movieId: movieId,
+                        movieName: movie.Title
+                    }));
+
                     // Add functionality to store booking details when the user clicks "Buy Movie"
                     document.querySelector('.tickets-button').addEventListener('click', () => {
                         // Get selected date, time, ticket count, and total price
-                        const movieDetails = {
-                            movieId: movieId,  // Store the movie ID
-                        };
-
-                        // Save to localStorage
-                        localStorage.setItem('movieDetails', JSON.stringify(movieDetails));
                         window.location.href = "/ShoppingCart.html";  // Redirect to the shopping cart page
                     });
 
-                    // Function to calculate total price (example: $10 per ticket)
-                    function calculatePrice(ticketCount) {
-                        return ticketCount * 10; // Replace with actual pricing logic
-                    }
                 } else {
                     console.error("No movie found with the given ID");
                 }
@@ -208,6 +204,8 @@
         } else {
             console.error("No movie ID provided in the URL");
         }
+
+
     </script>
 
 </body>

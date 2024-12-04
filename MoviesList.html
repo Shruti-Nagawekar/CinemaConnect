@@ -131,10 +131,11 @@
 
                 // Add movie poster and link
                 movieCard.innerHTML = `
-    <a href="/moviedetail/?id=${doc.id}">
+    <a href="/CinemaConnect/MovieDetails.html?id=${doc.id}">
         <img src="${movie.posterURL}" alt="${movie.title}" class="movie-poster">
 
     </a>
+    
     `;
 
                 movieCardContainer.appendChild(movieCard);
@@ -142,6 +143,7 @@
         };
 
         fetchMovies();
+
     </script>
 </body>
 

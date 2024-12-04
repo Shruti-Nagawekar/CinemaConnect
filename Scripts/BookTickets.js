@@ -1,6 +1,6 @@
 // Import Firestore functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -12,7 +12,6 @@ const firebaseConfig = {
     appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
 };
 
-// ```javascript
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -33,12 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const showtimeData = doc.data();
                 const date = showtimeData.date;
                 const time = showtimeData.time;
+                const screen = showtimeData.screen; // Get the screen information
 
                 // Initialize the array for this date if it doesn't exist
                 if (!showtimesMap[date]) {
                     showtimesMap[date] = [];
                 }
-                showtimesMap[date].push(time);
+                showtimesMap[date].push({ time, screen }); // Store both time and screen
             });
         } catch (error) {
             console.error("Error fetching showtimes for movie ID:", movieId, error);
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortedDates.forEach(date => {
             // Sort times for the current date
-            const sortedTimes = showtimesMap[date].sort(); // Sort times lexicographically
+            const sortedTimes = showtimesMap[date].sort((a, b) => a.time.localeCompare(b.time)); // Sort times lexicographically
 
             // Create a date item
             const dateItem = document.createElement('div');
@@ -80,18 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
         timeList.innerHTML = ''; // Clear previous times
 
         // Sort times before displaying
-        const sortedTimes = times.sort(); // Sort times lexicographically
+        times.sort((a, b) => a.time.localeCompare(b.time)); // Sort times lexicographically
 
         // Showing times in the webpage
-        sortedTimes.forEach(time => {
+        times.forEach(({ time, screen }) => {
             const timeItem = document.createElement('div');
             timeItem.classList.add('time-item');
-            timeItem.textContent = time;
+            timeItem.textContent = `${time}`; // Display time
 
             // Add click event to handle selection
             timeItem.addEventListener('click', () => {
                 document.querySelectorAll('.time-item').forEach(item => item.classList.remove('active'));
                 timeItem.classList.add('active');
+
+                // Store the selected screen in local storage for later use
+                localStorage.setItem('screenNum', screen);
             });
 
             timeList.appendChild(timeItem);
@@ -125,9 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectedDate = document.querySelector('.date-item.active')?.textContent;
         const selectedTime = document.querySelector('.time-item.active')?.textContent;
-
+        const screenNum = localStorage.getItem('screenNum'); // Ensure correct key is used
+        console.log("Screen num:", screenNum);
         const ticketCount = parseInt(document.getElementById('counterInput').value);
-        const movieId = "ZZWLsvq2YA951jLgvRon"; // Hardcoded movie ID REMOVE THIS AND ADD CORRECT
+
+        // Retrieve movie details from local storage
+        const movieDetails = JSON.parse(localStorage.getItem('movieDetails'));
+        const movieId = movieDetails.movieId;
+        console.log("Movie Id: ", movieId);
+
         const userId = "user1"; // Hardcoded user ID REMOVE THIS AND ADD CORRECT
         const totalPrice = ticketCount * 10; // Assuming each ticket costs $10
 
@@ -161,7 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: selectedTime,
                 ticketCount: ticketCount,
                 totalPrice: totalPrice,
-                userId: userId //Change this
+                userId: userId, //Change this
+                screen: screenNum,
             }));
 
             // Redirect to confirmation page
@@ -172,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Error adding booking. Please try again.");
         }
     }
-
 
     // Select number of tickets
     const counterInput = document.getElementById('counterInput');
