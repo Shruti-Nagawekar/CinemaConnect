@@ -78,11 +78,12 @@
     </header>
 
     <main class="main-section">
+        <button id="print-button">Print</button>
         <div class="section-title">Order Details</div>
 
         <div class="confirmation">
-            <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account, and
-                an email confirmation has been sent to the email address used to make the purchase.</div>
+            <div class="thank-you-message">Thank you for your purchase. Your ticket has been saved to your account.
+            </div>
 
             <div class="Barcode">
                 <div class="movie-ticket">
@@ -90,8 +91,9 @@
                 </div>
 
                 <div class="confirmation-number" id="confirmationNumber"></div>
-                <div>Show your barcode at the theater podium to pick up your tickets.</div>
             </div>
+
+            <div>Show your barcode at the theater podium to pick up your tickets.</div>
 
             <div class="ordered-movie-details">
                 <div class="Movie-image">
@@ -132,19 +134,6 @@
         const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
         const movieDetails = JSON.parse(localStorage.getItem('movieDetails'));
 
-        // async function fetchMovieName(movieId) {
-        //     const movieRef = doc(db, "Movie", movieId);
-        //     const movieDoc = await getDoc(movieRef);
-
-        //     if (movieDoc.exists()) {
-        //         const movieName = movieDoc.data().Title;
-        //         console.log("Movie Title: ", movie)
-        //         return movieName;
-        //     }
-        //     else {
-        //         console.error("No movie found with the given ID");
-        //     }
-        // }
         console.log("Screen num: ", screen)
         if (bookingDetails) {
             document.getElementById('confirmationNumber').textContent = `Confirmation Number: ${bookingDetails.confirmationNumber}`;
@@ -192,6 +181,13 @@
             // Handle case where no booking details are found
             document.querySelector('.confirmation').innerHTML = '<div>No booking details found.</div>';
         }
+
+        //Printing the confirmation
+        const printButton = document.getElementById("print-button");
+
+        printButton.addEventListener("click", () => {
+            window.print();
+        });
     </script>
 </body>
 

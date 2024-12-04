@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Payment Page</title>
 
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <script src="functions.js"></script>
+
 <body>
     <!-- Header Section -->
     <header class="header">
@@ -81,7 +83,7 @@
             <div class="input-container">
                 <!-- <label for="cardholder-name" class="form-label">Cardholder Name</label> -->
                 <input type="text" id="cardholder-name" class="input-field" placeholder="Cardholder Name">
-                
+
                 <!-- <label for="card-number" class="form-label">Card Number</label> -->
                 <input type="text" id="card-number" class="input-field" placeholder="Card Number">
 
@@ -93,11 +95,63 @@
             </div>
 
 
-            <div class="button">Pay Now</div>
+            <div class="button" id="payNowButton" href="confirmation.html">Pay Now</div>
 
-    </div>
+        </div>
 
     </main>
-</body>
-</html>
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Function to handle payment
+        async function handlePayment() {
+            // Retrieve booking details from local storage
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+            if (!bookingDetails) {
+                alert("No booking details found.");
+                return;
+            }
+
+            // Get the booking document reference
+            const bookingRef = doc(db, "bookings", bookingDetails.confirmationNumber); // Use the correct ID here
+
+            try {
+                // Update the payment status
+                await updateDoc(bookingRef, {
+                    paymentStatus: true
+                });
+
+                console.log("Payment status updated successfully.");
+                alert("Payment successful! Redirecting to confirmation...");
+
+                // Redirect to the confirmation page
+                window.location.href = 'confirmation.html';
+            } catch (error) {
+                console.error("Error updating payment status: ", error);
+                alert("There was an error processing your payment. Please try again.");
+            }
+        }
+
+        // Add event listener for the "Pay Now" button
+        document.getElementById('payNowButton').addEventListener('click', handlePayment);
+    </script>
+</body>
+
+</html>
