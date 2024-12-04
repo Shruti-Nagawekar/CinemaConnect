@@ -1,0 +1,1357 @@
+/*
+element
+.class
+#id{
+
+    align-items: center;                                <!-- vertical Alighnment (left,right,center) -->
+
+    background-color: #151515;                          <!-- Backround color (Hex) -->
+
+    box-shadow: 0px 4px 4px #151515;                    <!-- shadow -->
+
+    border: 1px solid #151515;                          <!-- Border default off: sixe(px) style color(hex) -->
+
+    border-radius: 10px;                                <!-- curved corners of the border -->
+
+    cursor: pointer;                                    <!-- cursor style -->
+
+    color: #C0C0C0;                                     <!-- text color -->
+
+    display: flex;                                      <!-- how objects move -->
+
+    flex-direction: column;                             <!-- direction div items move -->
+
+    flex-wrap: wrap;                                    <!-- how do objects in the div behave(wrap) -->
+
+    font-family: Limelight, sans-serif;                 <!-- font style -->
+
+    font-size: 64px;                                    <!-- font size -->
+
+    gap: 30px;                                          <!-- space between objects in div -->
+
+    height: 111px;                                      <!-- Height of div -->
+
+    justify-content: space-between;                     <!-- horizontle podition of objects in div -->
+
+    justify-self: right;                                <!-- horizontle position of div -->
+
+    margin: px;                                         <!-- space between a element and the next posible element -->
+
+    padding: 0px;                                       <!-- space between its content and its border. -->
+
+    position: sticky;                                   <!-- position in page: (static|absolute|fixed|relative|sticky|initial|inherit;)-->
+
+    text-decoration-line: underline;                    <!-- add stuf to text (line) -->
+
+    text-decoration-style: solid;                       <!-- Add stuf to text define -->
+    
+    top: 0;                                             <!-- vertical position of a positioned element -->
+    
+    width: 100%;                                        <!-- Width of div (px,%) -->
+
+    -webkit-text-stroke: 1px #C0C0C0;                   <!-- Add stroke to text: width(px) color(Hex) -->
+
+    z-index: 10;                                        <!-- z layering (if u want something in front of another thing) -->
+    
+}
+*/
+/*body*/
+body {
+    font-family: Limelight, sans-serif;
+    height: 100%;
+    background-color: black;
+    color: #C0C0C0;
+    padding: 0px;
+    margin: 0px;
+    min-width: 500px;
+}
+
+/* Button */
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Centers the button horizontally */
+    align-items: center;
+    /* Centers the button vertically */
+    margin-top: 30px;
+}
+
+/* Button Styling */
+.button {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    color: #C0C0C0;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Input Fields */
+.input-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    width: 43%;
+    height: 55px;
+    background: #151515;
+    border: 3px solid #451671;
+    border-radius: 10px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #C0C0C0;
+    font-size: 20px;
+    padding: 0 15px;
+    margin-top: 5px;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Logo */
+.header-logo a {
+    font-family: 'Limelight', cursive;
+    font-size: 2.5rem;
+    color: #8A2BE2;
+    -webkit-text-stroke: 1px #C0C0C0;
+    padding:10px;
+    /* Adds a white outline */
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav a {
+    color: #C0C0C0;
+    font-size: 1.5rem;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #8400FF;
+}
+
+.nav .sign-in a {
+    color: #00FFFF;
+}
+
+.nav .sign-in a:hover {
+    color: #8400FF;
+}
+
+/* Sign-in Section */
+.sign-in {
+    display: flex;
+    justify-self: right;
+    align-items: center;
+    font-size: 16px;
+}
+
+#icon {
+    font-size: 54px;
+    color: #8400FF;
+}
+
+.sign-in span {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.sign a {
+    width: 75px;
+    color: #00FFFF;
+}
+
+.nav-burggger-cart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.burger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: #C0C0C0;
+    margin: 5px;
+}
+
+/* Mobile Navigation */
+.mobile-nav a:hover {
+    color: #8400FF;
+}
+
+.mobile-nav a {
+    color: #C0C0C0;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.mobile-nav .sign-in a {
+    color: #00FFFF;
+}
+
+.mobile-nav .sign-in a:hover {
+    color: #8400FF;
+}
+
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #151515;
+    position: absolute;
+    top: 111px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.show-mobile-nav {
+    display: flex;
+}
+
+/* shopingCart */
+.ShopingCart {
+    margin: 10px;
+    padding: 10px;
+}
+
+
+
+/* Main Section */
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #151515;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 75%;
+    height: 50px;
+    background-color: black;
+    border-radius: 25px;
+    border: 3px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin: 25px;
+}
+
+/* Icon Styling */
+.search-bar .icon {
+    /* width: 40px;
+    height: 40px; */
+    background-color: #8400FF;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* Input Field */
+.search-bar .search-input {
+    flex: 1;
+    /* Allow the input to take the remaining space */
+    height: 90%;
+    /* Fit within the search bar */
+    border: none;
+    /* Remove default input border */
+    outline: none;
+    /* Remove focus outline */
+    background-color: transparent;
+    /* Transparent to match the bar */
+    color: white;
+    /* Input text color */
+    font-size: 18px;
+    /* Adjust text size */
+    font-family: 'Arial', sans-serif;
+    /* Ensure readability */
+    padding-right: 20px;
+    /* Add spacing for a balanced look */
+}
+
+/* Placeholder Text Styling */
+.search-bar .search-input::placeholder {
+    color: #AAAAAA;
+    /* Subtle placeholder text color */
+    opacity: 0.8;
+    /* Slightly faded */
+}
+
+
+/* --- Home --- */
+/* Title and Movie Selection */
+.title-selection-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Pushes section title and movie selection to opposite ends */
+    margin-bottom: 50px;
+    background-color: black;
+    flex-wrap: wrap;
+}
+
+.section-title {
+    font-size: 64px;
+    margin: 10px;
+    color: #00FFFF;
+    -webkit-text-stroke: 1px #C0C0C0;
+    /* Adds a white outline */
+}
+
+.movie-selection {
+    display: flex;
+    gap: 30px;
+    margin: 10px;
+    font-size: 32px;
+    color: #C0C0C0;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    /* this is default */
+    -webkit-text-stroke: 1px #fff;
+    /* Adds a white outline */
+}
+
+.movie-selection a:hover {
+    color: #8400FF;
+}
+
+/* Movie Card Container */
+.movie-card-container {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    width: 300px;
+    height: 400px;
+    background-color: #C0C0C0;
+    border: 1px solid #8A2BE2;
+}
+
+
+/* --- Create Acount --- */
+.register-container {
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 100px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title */
+.register-title {
+    font-size: 48px;
+    text-align: center;
+    color: #00FFFF;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+/* Password Instruction */
+.password-instructions {
+    font-size: 14px;
+    color: #F7F5FB;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 50%;
+}
+
+.register-button {
+    width: 300px;
+    height: 55px;
+    background: #451671;
+    border-radius: 50px;
+    font-size: 24px;
+    color: #C0C0C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+
+/* Additional Links */
+.link-text {
+    font-family: 'Limelight', sans-serif;
+    color: #C0C0C0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password,
+.new-account {
+    color: #00FFFF;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    background: rgba(247, 245, 251, 0.75);
+    border: 1px solid #00FFFF;
+    margin-right: 10px;
+}
+
+.checkbox-label {
+    font-family: 'Limelight', sans-serif;
+    color: #C0C0C0;
+    font-size: 32px;
+}
+
+/* General Login Container */
+.login-container {
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 100px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cart Option */
+.cart {
+    font-family: 'Limelight', sans-serif;
+    font-size: 24px;
+    color: #C0C0C0;
+    text-align: center;
+    padding: 0 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart .cart-icon {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.cart .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #FF0000;
+    color: #FFF;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+}
+
+/*shoping cart*/
+/* Order Container */
+.order-container {
+    position: flex;
+    width: 100%;
+    background: #151515;
+    display: flex;
+    justify-content: center;
+}
+
+/* Rectangle 7 */
+.HollowButton {
+    justify-content: center;
+    margin-left: 45%;
+    /* Align button to the right */
+    width: 280px;
+    height: 50px;
+    margin: 20px;
+    border: 5px solid #8A2BE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 50px;
+    justify-self: right;
+}
+
+/* Rectangle 24 */
+.orderButtoon {
+    justify-content: center;
+    background-color: #451671;
+    margin-left: 45%;
+    /* Align button to the right */
+    width: 350px;
+    height: 55px;
+    margin: 20px;
+    border: 5px solid #C0C0C0;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 50px;
+    justify-self: right;
+}
+
+/* Order Summary */
+.order-summary {
+    width: 100%;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    color: #C0C0C0;
+    margin: 50px;
+}
+
+.order-summary a {
+    width: 100%;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    color: #C0C0C0;
+    padding: 50px;
+}
+
+/* Individual Line of Movie Details */
+.movie-details div {
+    margin-bottom: 7px;
+}
+
+/* Styling specific lines */
+.movie-details .date-time,
+.movie-details .theater-address,
+.movie-details .seat {
+    color: #C0C0C0;
+}
+
+/* Items in Cart */
+.items-in-cart {
+    width: 450px;
+    height: 45px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #000000;
+}
+
+/* Price */
+.price {
+    width: 115px;
+    height: 35px;
+    margin: 50px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #C0C0C0;
+    text-align: right;
+    justify-self: right;
+}
+
+/* Checkout Button */
+.checkout-button {
+    position: absolute;
+    width: 350px;
+    height: 55px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 20px;
+    color: #C0C0C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keep Shopping Button */
+.keep-shopping {
+    width: 350px;
+    height: 55px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 20px;
+    color: #8A2BE2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Order Confermation*/
+
+/* Thank you message */
+.thank-you-message {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #C0C0C0;
+    width: 85%;
+    justify-self: center;
+    padding: 30px;
+}
+
+/* Confirmation Rectangle */
+.Barcode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    width: 75%;
+    background: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Movie Ticket */
+.movie-ticket {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+/* Confirmation Number */
+.confirmation-number {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #C0C0C0;
+}
+
+.ordered-movie-details {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/* Movie Details */
+.movie-details {
+    margin: 50px;
+    padding: 50px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    justify-content: center;
+    color: #00FFFF;
+}
+
+/* Rectangle for Movie Details */
+.Movie-image {
+    margin: 50px;
+    background: #C0C0C0;
+    border: 1px solid #451671;
+    justify-content: center;
+    padding: auto;
+}
+
+.Add-Movie-Button {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    color: #C0C0C0;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Limelight', sans-serif;
+    font-size: 24px;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1440px;
+    background: #151515;
+}
+
+/* Movie Header Section */
+.movie-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.poster {
+    width: 100%;
+    max-width: 375px;
+    aspect-ratio: 375 / 425;
+    background: #C0C0C0;
+    border: 2px solid #8A2BE2;
+}
+
+.Movie {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.Movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Movie-book {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 25px;
+}
+
+.movie-title {
+    color: #00FFFF;
+    font-size: 2.5em;
+    font-family: Limelight, cursive;
+    font-weight: 400;
+}
+
+.info-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 1em;
+    font-family: Lexend Deca, sans-serif;
+}
+
+.info-item {
+    flex: 1 1 120px;
+    min-width: 100px;
+    font-weight: 400;
+}
+
+/* Description Section */
+.description {
+    font-size: 1.1em;
+    font-family: Lexend Deca, sans-serif;
+    line-height: 1.5;
+}
+
+/* Tickets Button */
+.tickets-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #451671;
+    border-radius: 5px;
+    color: #C0C0C0;
+    font-size: 1.5em;
+    font-family: Limelight, cursive;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Reviews Section */
+.reviews-section {
+    background: #000;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    gap: 20px;
+}
+
+.reviews-title {
+    color: #8A2BE2;
+    font-size: 2.5em;
+    font-family: Limelight, cursive;
+}
+
+.write-review {
+    width: 95%;
+    align-self: center;
+    padding: 10px;
+    margin: 10px;
+    background: #151515;
+    border: 1px solid #451671;
+    color: #C0C0C0;
+    font-size: 1.25em;
+    font-family: Lexend Mega, sans-serif;
+    border-radius: 5px;
+}
+
+.review-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.review-rating {
+    color: #00FFFF;
+}
+
+.stars {
+    color: #C0C0C0;
+}
+
+.Theater-card-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #000000;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+}
+
+.Theater-card {
+    width: 400px;
+    height: 75px;
+    border-radius: 70px;
+    border: 1px solid #8400FF;
+    background: #151515;
+    text-align: center;
+    padding: 25px;
+    margin: 30px;
+}
+
+.Admin-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #000000;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    justify-content: space-around;
+}
+
+.Admin-card {
+    width: 400px;
+    height: 75px;
+    border-radius: 70px;
+    border: 1px solid #8400FF;
+    background: #151515;
+    text-align: center;
+    padding: 25px;
+    margin: 30px;
+}
+
+/* Container */
+.BookTickets-container {
+    width: 100%;
+    height: 100%;
+    background: #151515;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Dividers */
+.divider {
+    width: 75%;
+    height: 1px;
+    margin: 25px 0;
+    align-self: center;
+    border: 1px solid #451671;
+}
+
+/* Show Times Text (Justified Left) */
+.show-times {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    /* Align in a row */
+    justify-content: space-between;
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding-top: 25px;
+    word-wrap: break-word;
+    text-align: center;
+    align-items: center;
+    margin-right: 45%;
+    /* Align button to the right */
+}
+
+/* Date Labels */
+.date-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.date {
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+/* Time Labels */
+.time-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.time {
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+/* Book Tickets */
+.book-tickets {
+    color: #00FFFF;
+    font-size: 64px;
+    font-family: Limelight;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+/* Button Container (Justify Right) */
+.bookTiket-button-container {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    margin-top: 50px;
+    margin-left: 45%;
+    /* Align button to the right */
+}
+
+/* Ticket Selection (Row Layout) */
+.ticket-selection {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    /* Align in a row */
+    justify-content: space-between;
+    color: #C0C0C0;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 800;
+    padding-top: 50px;
+    word-wrap: break-word;
+    text-align: center;
+    align-items: center;
+    margin-right: 45%;
+    /* Align button to the right */
+}
+
+/* Ticket Number */
+.ticket-number {
+    width: 140px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px #CAC4D0 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ticket-number-content {
+    width: 140px;
+    padding: 1px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+.ticket-number-text {
+    text-align: center;
+    color: #4F4F4F;
+    font-size: 24px;
+    font-family: Lexend Deca;
+    font-weight: 400;
+}
+
+
+
+/* Responsive Styles */
+@media screen and (max-width: 920px) {
+    .nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .Movie {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .show-times {
+        margin-right: 0;
+        justify-content: center;
+    }
+
+    .ticket-selection {
+        margin-right: 0;
+    }
+
+    .bookTiket-button-container {
+        margin-left: 0;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+
+
+
+    .password-instructions {
+        padding-left: 0%;
+    }
+
+    .ordered-movie-details {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    .title-selection-container {
+        justify-content: center;
+    }
+}
+
+.login-input-field{
+    width: 100%;
+}
+
+/* Payment */
+
+.mbs {
+    font-size: 64px;
+    line-height: 78px;
+    color: #8A2BE2;
+    border: 2px solid #451671;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links>div {
+    margin: 0 15px;
+    font-size: 32px;
+    line-height: 39px;
+    color: #C0C0C0;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.sign-in {
+    font-size: 16px;
+    line-height: 19px;
+    color: #00FFFF;
+    padding: 10px 20px;
+}
+
+.payment-container {
+    background-color: #000000;
+    border: 1px solid #451671;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 100px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-title {
+    font-size: 48px;
+    text-align: center;
+    color: #00FFFF;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+
+.form-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-label {
+    font-size: 16px;
+    justify-self: left;
+    width: 100%;
+    text-align: left;
+    color: #C0C0C0;
+}
+
+.form-input {
+    width:100%;
+}
+
+.pay-now-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pay-now-btn {
+    width: 375px;
+    height: 65px;
+    background: #451671;
+    border-radius: 50px;
+    font-size: 24px;
+    color: #C0C0C0;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Styling for Admin Cards */
+.Admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Admin-card {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8400FF;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Admin-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin-card-button {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.admin-card-button:hover {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.movie-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.movie-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.remove-movie-button {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.remove-movie-button:hover {
+    background-color: #cc0000;
+}
+.table-container {
+    margin: 20px auto;
+    overflow-x: auto;
+    width: 90%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #000000;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #000000;
+}
+
+tr:hover {
+    background-color: #390042;
+}
+
+.back-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.collections-container {
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+}
+
+.collection-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.generate-report-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.generate-report-button:hover {
+    background-color: #218838;
+}
+
+.back-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
