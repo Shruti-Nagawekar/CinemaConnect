@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CinemaConnect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #151515;
+            color: #C0C0C0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #8A2BE2;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0 40px;
+            color: #C0C0C0;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #FFF;
+            background-color: #8400FF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5a00b3;
+        }
+
+        button:active {
+            background-color: #4e00a1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CinemaConnect</h1>
+    <p>Seamlessly Connecting You to Exceptional Movie Experiences. Book tickets now!</p>
+    <div class="button-container">
+        <button onclick="window.location.href='sign_in.html'">Sign In</button>
+        <button onclick="window.location.href='create_acc.html'">Create Account</button>
+    </div>
+</body>
+
+</html>
