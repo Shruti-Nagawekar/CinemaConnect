@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Import Google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- Import Style sheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+    </header>
+
+    <main class="main-section">
+        <!-- Registration Form Container -->
+        <div class="register-container">
+            <div class="register-title">Create an Account</div>
+            
+            <!-- Input Fields -->
+            <div class="input-container">
+                <input type="email" id="email" class="input-field" placeholder="Email Address" required>
+                <input type="email" id="confirm-email" class="input-field" placeholder="Confirm Email Address" required>
+                <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+                <input type="text" id="phone" class="input-field" placeholder="Phone Number" required>
+                <input type="text" id="address" class="input-field" placeholder="Home Address" required>
+                <input type="password" id="password" class="input-field" placeholder="Password" required>
+            </div>
+            
+            <!-- Password Instructions -->
+            <div class="password-instructions">
+                Minimum of eight characters, with at least one letter and one number.
+            </div>
+
+            <!-- Register Button -->
+            <div class="button-container">
+                <button id="register-button" class="register-button">Register</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase and Custom Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Register Button Functionality
+        document.getElementById('register-button').addEventListener('click', async () => {
+            const email = document.getElementById('email').value.trim();
+            const confirmEmail = document.getElementById('confirm-email').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Basic Validation
+            if (!email || !confirmEmail || !name || !phone || !address || !password) {
+                alert('All fields are required!');
+                return;
+            }
+
+            if (email !== confirmEmail) {
+                alert('Email and Confirm Email do not match!');
+                return;
+            }
+
+            if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+                alert('Password must be at least 8 characters long and include at least one letter and one number.');
+                return;
+            }
+
+            try {
+                // Create User in Firebase Auth
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // Send Email Verification
+                await user.sendEmailVerification();
+                alert('Verification email sent! Please check your inbox.');
+
+                // Save User in Firestore
+                await db.collection('users').doc(user.uid).set({
+                    email: email,
+                    firstName: name.split(' ')[0] || '',
+                    lastName: name.split(' ').slice(1).join(' ') || '',
+                    phone: phone,
+                    address: address,
+                    bookings: [] // Initialize bookings as empty
+                });
+
+                // Redirect or Confirmation
+                alert('Account created successfully! Please verify your email before signing in.');
+                window.location.href = 'sign_in.html';
+            } catch (error) {
+                console.error('Error creating account:', error);
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+</html>

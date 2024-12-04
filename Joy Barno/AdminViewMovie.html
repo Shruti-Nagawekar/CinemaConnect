@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View and Edit Movies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- import Google icons -->
+     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+    </header>
+
+    <!-- Back and Save Buttons -->
+    <div class="control-buttons">
+        <button onclick="window.location.href='Admin.html';" class="back-button">Back</button>
+        <button id="save-button" class="save-button">Save Changes</button>
+    </div>
+
+    <main class="main-section">
+        <!-- Title -->
+        <h1>Current Movies</h1>
+
+        <!-- Movies Table -->
+        <div class="table-container">
+            <table id="movies-table">
+                <thead>
+                    <tr>
+                        <th>Movie ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Cast</th>
+                        <th>Genre</th>
+                        <th>Runtime (min)</th>
+                        <th>Is Upcoming</th>
+                        <th>Poster URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Movie rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Firebase and Custom Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Fetch and Display Movies in the Table
+        const tableBody = document.querySelector('#movies-table tbody');
+        const editedMovies = {};
+
+        db.collection('Movie').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const movie = doc.data();
+                const movieId = doc.id;
+
+                // Create a table row
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${movieId}</td>
+                    <td contenteditable="true" data-field="Title">${movie.Title}</td>
+                    <td contenteditable="true" data-field="Description">${movie.Description}</td>
+                    <td contenteditable="true" data-field="Cast">${movie.Cast || 'N/A'}</td>
+                    <td contenteditable="true" data-field="Genre">${movie.Genre}</td>
+                    <td contenteditable="true" data-field="Runtime">${movie.Runtime}</td>
+                    <td contenteditable="true" data-field="isUpcoming">${movie.isUpcoming ? 'Yes' : 'No'}</td>
+                    <td contenteditable="true" data-field="posterURL"><a href="${movie.posterURL}" target="_blank">${movie.posterURL}</a></td>
+                `;
+
+                // Track changes in editable cells
+                row.querySelectorAll('[contenteditable]').forEach((cell) => {
+                    cell.addEventListener('input', () => {
+                        if (!editedMovies[movieId]) {
+                            editedMovies[movieId] = {};
+                        }
+                        const field = cell.getAttribute('data-field');
+                        editedMovies[movieId][field] = field === 'isUpcoming' && cell.textContent.trim().toLowerCase() === 'yes';
+                        if (field !== 'isUpcoming') {
+                            editedMovies[movieId][field] = cell.textContent.trim();
+                        }
+                    });
+                });
+
+                tableBody.appendChild(row);
+            });
+        }).catch((error) => {
+            console.error('Error fetching movies:', error);
+        });
+
+        // Save Changes to Firestore
+        document.getElementById('save-button').addEventListener('click', () => {
+            const promises = Object.keys(editedMovies).map((movieId) => {
+                return db.collection('Movie').doc(movieId).update(editedMovies[movieId])
+                    .then(() => {
+                        console.log(`Updated ${movieId}`);
+                    })
+                    .catch((error) => {
+                        console.error(`Error updating ${movieId}:`, error);
+                    });
+            });
+
+            Promise.all(promises)
+                .then(() => {
+                    alert('All changes saved successfully!');
+                    window.location.reload(); // Reload to refresh the data
+                })
+                .catch((error) => {
+                    alert('Some changes could not be saved. Please try again.');
+                    console.error('Error saving changes:', error);
+                });
+        });
+    </script>
+
+    <style>
+        .control-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .back-button {
+            font-family: 'Limelight', sans-serif;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .save-button {
+            font-family: 'Limelight', sans-serif;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .save-button:hover {
+            background-color: #218838;
+        }
+
+        [contenteditable="true"] {
+            background-color: #451671;
+            border: 1px dashed #ddd;
+            font-family: 'Limelight', sans-serif;
+            font-size: 8px;
+            margin-top: 20px;
+        }
+
+        [contenteditable="true"]:focus {
+            background-color: #fff;
+            outline: 2px solid #007BFF;
+        }
+    </style>
+</body>
+</html>

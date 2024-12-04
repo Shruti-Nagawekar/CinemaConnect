@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MBS Movies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import Google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <!-- Import Style sheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <!-- Logo -->
+        <div class="header-logo">
+            <a href="Home.html">CC</a>
+        </div>
+
+        <div class="nav-burggger-cart">
+            <!-- Navigation Links -->
+            <nav class="nav">
+                <a href="MoviesList.html">Movies</a>
+                <a href="Theaters.html">Theaters</a>
+                <div id="auth-buttons" class="sign-in">
+                    <!-- Auth buttons will be dynamically populated -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-section">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <span class="material-symbols-outlined" id="icon">search</span>
+            <input type="text" class="search-input" placeholder="Search">
+        </div>
+
+        <!-- Title and Movie Selection -->
+        <div class="title-selection-container">
+            <div class="section-title">Movies</div>
+            <div class="movie-selection">
+                <a>Current</a>
+                <a>Upcoming</a>
+            </div>
+        </div>
+
+        <!-- Movie Card Container -->
+        <div class="movie-card-container">
+            <div class="movie-card"></div>
+            <div class="movie-card"></div>
+            <div class="movie-card"></div>
+            <div class="movie-card"></div>
+        </div>
+    </main>
+
+    <!-- Firebase Integration -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.appspot.com",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Update UI based on auth state
+        const authButtons = document.getElementById('auth-buttons');
+
+        auth.onAuthStateChanged(async (user) => {
+            authButtons.innerHTML = ''; // Clear previous content
+
+            if (user) {
+                const userEmail = user.email;
+                let isAdmin = false;
+
+                // Check Admin collection for a match
+                try {
+                    const adminSnapshot = await db.collection('Admin').get();
+                    adminSnapshot.forEach((doc) => {
+                        const adminData = doc.data();
+                        if (adminData.Email === userEmail) {
+                            isAdmin = true;
+                        }
+                    });
+
+                    // Display user email and signout button
+                    authButtons.innerHTML = `
+                        <span>${userEmail}</span>
+                        <button id="signout-button" class="button">Sign Out</button>
+                    `;
+
+                    if (isAdmin) {
+                        // Add Admin Panel button
+                        const adminPanelButton = document.createElement('a');
+                        adminPanelButton.href = 'Admin.html';
+                        adminPanelButton.className = 'button admin-button';
+                        adminPanelButton.textContent = 'Admin Panel';
+                        authButtons.appendChild(adminPanelButton);
+                    }
+
+                    // Signout functionality
+                    document.getElementById('signout-button').addEventListener('click', () => {
+                        auth.signOut().then(() => {
+                            alert('Signed out successfully!');
+                            window.location.href = 'sign_in.html';
+                        }).catch((error) => {
+                            console.error('Error signing out:', error);
+                        });
+                    });
+
+                } catch (error) {
+                    console.error('Error fetching admin data:', error);
+                }
+            } else {
+                // Default view: Sign In and Create Account buttons
+                authButtons.innerHTML = `
+                    <span class="material-symbols-outlined" id="icon">account_circle</span>
+                    <a class="sign" href="sign_in.html">Sign in</a>
+                    <span>or</span>
+                    <a class="create" href="create_acc.html">Create an Account</a>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>

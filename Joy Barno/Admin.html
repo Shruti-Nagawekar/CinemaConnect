@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--  -->
+<!-- html Start -->
+<html lang="en">        
 
+<!-- Header(tabspace and imports) -->
 <head>
-    <title>Cart</title>
+    <title>Admin</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +19,7 @@
     <!-- import Style sheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<script src="functions.js"></script>
-
+<script src="funtions.js"></script>
 <body>
 
     <!-- Header Section -->
@@ -75,57 +77,41 @@
         </div>
 
     </header>
-
+    
     <!-- Main Section -->
     <main class="main-section">
-        <div class="section-title">Shopping Cart</div>
 
-        <div class="order-container">
-            <!-- Order Summary -->
-            <div class="order-summary">
-                <a>Order Summary</a>
-
-                <!-- Movie Title & Date (separated into lines) -->
-                <div class="movie-details">
-                    <div id="movieTitle">Movie Title</div>
-                    <div class="date-time" id="dateTime">Date at Time</div>
-                    <div class="theater-address" id="theaterAddress">Theater Address</div>
-                    <div id="ticketCount">Ticket(#)</div>
-                    <!--<div class="seat" id="seatDetails">Seat: XX XX XX</div>-->
-                </div>
-
-                <!-- Price -->
-                <div class="price" id="totalPrice">$00.00</div>
-
-                <!-- Checkout Button -->
-                <div class="orderButtoon button">
-                    <div class="checkout-button" onclick="window.location.href='confirmation.html'">Checkout</div>
-                </div>
-
-                <!-- Keep Shopping Button -->
-                <div class="keep-shopping HollowButton">
-                    <div class="keep-shopping">Keep Shopping</div>
-                </div>
-            </div>
+        <div class="section-title">Welcome Admin!</div>
+         
+       <!-- Admin Options -->
+       <div class="Admin-container">
+        <div class="Admin-card">
+            <button onclick="window.location.href='AdminGenerateReport.html';" class="admin-card-button">Generate Status Report</button>
         </div>
+        <div class="Admin-card">
+            <button onclick="window.location.href='AdminViewMovie.html';" class="admin-card-button">View Current Movies</button>
+        </div>        
+        <div class="Admin-card">
+            <button onclick="window.location.href='AddMovie.html';" class="admin-card-button">Add an Upcoming Movie</button>
+        </div>
+        <div class="Admin-card">
+            <button onclick="window.location.href='Remove.html';" class="admin-card-button">Remove a Movie</button>
+        </div>        
+    </div>
+        
     </main>
+     <!-- Global Script for Admin Protection -->
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-    <script>
-        // Retrieve booking details from local storage
-        const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
-
-        if (bookingDetails) {
-            document.getElementById('movieTitle').textContent = `Movie Title: ${bookingDetails.movieId}`; // Replace with actual movie title if available
-            document.getElementById('dateTime').textContent = `${bookingDetails.date} at ${bookingDetails.time}`;
-            document.getElementById('theaterAddress').textContent = `Theater: ${bookingDetails.theater}`;
-            document.getElementById('ticketCount').textContent = `Tickets: ${bookingDetails.ticketCount}`;
-            document.getElementById('seatDetails').textContent = `Seat: XX XX XX`; // Replace with actual seat details if available
-            document.getElementById('totalPrice').textContent = `$${bookingDetails.totalPrice.toFixed(2)}`; // Display total price
-        } else {
-            // Handle case where no booking details are found
-            document.querySelector('.order-summary').innerHTML = '<div>No booking details found.</div>';
-        }
+            // Redirect non-admins to sign-in page
+            if (!isAdmin) {
+                alert('Access denied. Admins only.');
+                window.location.href = 'sign_in.html';
+            }
+        });
     </script>
-</body>
 
+</body>
 </html>
