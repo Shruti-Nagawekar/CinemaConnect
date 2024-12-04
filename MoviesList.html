@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <!--  -->
 <!-- html Start -->
-<html lang="en">        
+<html lang="en">
 
 <!-- Header(tabspace and imports) -->
+
 <head>
     <title>Movie List</title>
 
@@ -21,8 +22,9 @@
 
 </head>
 <script src="funtions.js"></script>
+
 <body>
-    
+
     <!-- Header Section -->
     <header class="header">
 
@@ -80,7 +82,7 @@
     </header>
     <!-- Main Section -->
     <main class="main-section">
-        
+
         <!-- Title and Movie Selection (Side by Side) -->
         <div class="title-selection-container">
             <div class="section-title">Movies</div>
@@ -91,39 +93,56 @@
         </div>
 
         <!-- Movie Card Container -->
-        <div class="movie-card-container">
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            
+        <div id="movie-card-container" class="movie-card-container">
+
         </div>
 
     </main>
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.firebasestorage.app",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const movieCardContainer = document.getElementById("movie-card-container");
+
+        // Fetch all movies from the Firestore "Movie" collection
+        const fetchMovies = async () => {
+            const moviesRef = collection(db, "Movie");
+            const snapshot = await getDocs(moviesRef);
+
+            snapshot.forEach((doc) => {
+                const movie = doc.data();
+
+                // Create movie card
+                const movieCard = document.createElement("div");
+                movieCard.classList.add("movie-card");
+
+                // Add movie poster and link
+                movieCard.innerHTML = `
+    <a href="/moviedetail/?id=${doc.id}">
+        <img src="${movie.posterURL}" alt="${movie.title}" class="movie-poster">
+
+    </a>
+    `;
+
+                movieCardContainer.appendChild(movieCard);
+            });
+        };
+
+        fetchMovies();
+    </script>
 </body>
+
 </html>

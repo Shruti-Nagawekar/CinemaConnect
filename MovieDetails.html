@@ -80,7 +80,7 @@
         </div>
 
     </header>
-    
+
     <!-- Main Section -->
     <main class="main-section">
 
@@ -90,7 +90,7 @@
 
                 <div class="Movie-book">
                     <!-- Poster Section -->
-                    <div class="movie-card"></div>
+                    <div id="movie-poster" class="movie-card"></div>
 
                     <!-- Tickets Button -->
                     <a href="BookTickets.html" class="name-title">
@@ -100,18 +100,18 @@
 
                 <div class="Movie-info">
                     <!-- Movie Title -->
-                    <div class="movie-title">Movie Title</div>
+                    <div id="movie-title" class="movie-title">Movie Title</div>
 
                     <!-- Movie Info Section -->
                     <div class="info-section">
-                        <div class="runtime">Runtime<br />XX hr XX min</div>
+                        <div id="movie-runtime" class="runtime">Runtime<br />XX hr XX min</div>
                         <div class="release-date">Release Date<br />Day XX, 20XX</div>
                         <div class="rating">Rating<br />PG</div>
-                        <div class="genre">Genre<br />Lorem ipsum</div>
+                        <div id="movie-genre" class="genre">Genre<br />Lorem ipsum</div>
                     </div>
 
                     <!-- Description -->
-                    <div class="description">
+                    <div id="movie-description" class="description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis enim luctus odio
                         ultrices fringilla. Pellentesque maximus sagittis accumsan. Aenean eleifend metus eget erat
                         faucibus commodo. Aliquam faucibus sit amet ipsum quis egestas. Sed nec neque vel nunc vehicula
@@ -142,6 +142,73 @@
         </div>
 
     </main>
+    <script type="module">
+        // Import Firestore functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzF9rQIiRhQTCPPTY93Fjvct8aDsJtHIM",
+            authDomain: "movie-booking-system-119eb.firebaseapp.com",
+            projectId: "movie-booking-system-119eb",
+            storageBucket: "movie-booking-system-119eb.firebasestorage.app",
+            messagingSenderId: "582758548972",
+            appId: "1:582758548972:web:2088b20c9cb3f1a0b42cc9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Get movie ID from the URL
+        const params = new URLSearchParams(window.location.search);
+        const movieId = params.get("id");
+
+        if (movieId) {
+            // Fetch movie details from Firestore
+            const fetchMovieDetails = async () => {
+                const movieRef = doc(db, "Movie", movieId);
+                const movieDoc = await getDoc(movieRef);
+
+                if (movieDoc.exists()) {
+                    const movie = movieDoc.data();
+                    console.log("Movie fetched:", movie); // Log the entire movie object
+
+                    // Update movie details on the page
+                    document.getElementById("movie-title").textContent = movie.Title;
+                    document.getElementById("movie-runtime").innerHTML = `Runtime<br />${Math.floor(movie.Runtime / 60)} hr ${movie.Runtime % 60} min`;
+                    document.getElementById("movie-genre").innerHTML = `Genre<br />${movie.Genre}`;
+                    document.getElementById("movie-description").textContent = movie.Description;
+
+                    // Update poster
+                    const posterElement = document.getElementById("movie-poster");
+                    posterElement.innerHTML = `<img src="${movie.posterURL}" alt="${movie.Title}" class="movie-poster">`;
+
+                    // Add functionality to store booking details when the user clicks "Buy Movie"
+                    document.querySelector('.tickets-button').addEventListener('click', () => {
+                        // Get selected date, time, ticket count, and total price
+                        const movieDetails = {
+                            movieId: movieId,  // Store the movie ID
+                        };
+
+                        // Save to localStorage
+                        localStorage.setItem('movieDetails', JSON.stringify(movieDetails));
+                        window.location.href = "/ShoppingCart.html";  // Redirect to the shopping cart page
+                    });
+
+                    // Function to calculate total price (example: $10 per ticket)
+                    function calculatePrice(ticketCount) {
+                        return ticketCount * 10; // Replace with actual pricing logic
+                    }
+                } else {
+                    console.error("No movie found with the given ID");
+                }
+            };
+
+            fetchMovieDetails();
+        } else {
+            console.error("No movie ID provided in the URL");
+        }
+    </script>
 
 </body>
 
